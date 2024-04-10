@@ -1,0 +1,21 @@
+{
+    "name": "com.samples.utils",
+    "rootNamespace": "",
+    "references": [
+        "Oculus.Interaction",
+        "Unity.TextMeshPro",
+        "Oculus.VR",
+        "Oculus.Interaction.OVR",
+        "darktable.xrgizmos",
+        "depthapi"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
