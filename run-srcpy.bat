@@ -1,0 +1,1 @@
+scrcpy-win64-v2.4\scrcpy.exe --no-audio -w -m 640
