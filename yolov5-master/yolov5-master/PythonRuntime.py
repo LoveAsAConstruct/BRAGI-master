@@ -31,8 +31,12 @@ def image_preview(image, apply_homography=False):
         updated_image = apply_homography_to_image(image)
     else:
         updated_image = image
-    detections = detect_objects_in_frame(image,apply_homography)
+    detections = detect_objects_in_frame(updated_image)
      # Optionally, draw bounding boxes on the transformed image
+    updated_image = draw_detection_boxes_on_frame(updated_image, detections)
+    return updated_image
+def draw_detection_boxes_on_frame(image, detections):
+    updated_image = image
     for det in detections:
         start_point = (det["x1"], det["y1"])
         end_point = (det["x2"], det["y2"])
@@ -40,8 +44,6 @@ def image_preview(image, apply_homography=False):
         cv2.rectangle(updated_image, start_point, end_point, color, 2)
         label = f"{det['objectName']} {det['confidence']:.2f}"
         cv2.putText(updated_image, label, (det["x1"], det["y2"] + 15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-
-
     return updated_image
 
 def detect_objects_in_frame(frame):
