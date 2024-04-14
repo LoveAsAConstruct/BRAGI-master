@@ -1,14 +1,14 @@
-# video_preview.py
-
+from detection_module import (
+    load_yolov5_model, detect_objects, format_detections, display_image_with_detections, 
+    load_homography_matrix, apply_homography
+)
 import cv2
-from detection_module import load_yolov5_model, detect_objects, format_detections, display_image_with_detections, load_homography_matrix, apply_homography
-
 def main():
     model = load_yolov5_model()
     H = load_homography_matrix()
-    cap = cv2.VideoCapture(0)
-    show_transformed = False
+    cap = cv2.VideoCapture(1)
 
+    show_transformed = False
     if not cap.isOpened():
         print("Error: Unable to open video source.")
         return
@@ -20,14 +20,15 @@ def main():
                 print("Failed to grab frame.")
                 break
 
-            detections = detect_objects(model, frame)
-            formatted_detections = format_detections(detections)
+            # Detect objects and format detections
+            raw_detections = detect_objects(model, frame)
+            detections = format_detections(raw_detections)  # Ensure detections are properly formatted
 
             if show_transformed:
                 transformed_frame, transformed_detections = apply_homography(H, frame, detections)
                 display_image_with_detections(transformed_frame, transformed_detections)
             else:
-                display_image_with_detections(frame, formatted_detections)
+                display_image_with_detections(frame, detections)
 
             key = cv2.waitKey(1)
             if key == 27:  # ESC key to exit

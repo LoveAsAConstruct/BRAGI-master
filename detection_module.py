@@ -22,41 +22,48 @@ def apply_homography_to_bbox(x1, y1, x2, y2, H):
     new_points = cv2.perspectiveTransform(points, H)
     return int(new_points[0, 0, 0]), int(new_points[0, 0, 1]), int(new_points[1, 0, 0]), int(new_points[1, 0, 1])
 
-def apply_homography(H, image=None, detections=None):
-    transformed_image = None
-    transformed_detections = None
-    if image is not None:
-        transformed_image = cv2.warpPerspective(image, H, (image.shape[1], image.shape[0]))
-    if detections is not None:
-        transformed_detections = [
-            {
-                "objectName": det[5],
-                "confidence": float(det[4]),
-                "x1": apply_homography_to_bbox(det[0], det[1], det[2], det[3], H)[0],
-                "y1": apply_homography_to_bbox(det[0], det[1], det[2], det[3], H)[1],
-                "x2": apply_homography_to_bbox(det[0], det[1], det[2], det[3], H)[2],
-                "y2": apply_homography_to_bbox(det[0], det[1], det[2], det[3], H)[3],
-                "center": ((det[0]+det[2])/2, (det[1]+det[3])/2)
-            } for det in detections
-        ]
-    return transformed_image, transformed_detections
+def apply_homography_to_point(x, y, H):
+    """Applies homography to a single point."""
+    point = np.array([[x, y]], dtype='float32').reshape(-1, 1, 2)
+    new_point = cv2.perspectiveTransform(point, H)
+    return int(new_point[0, 0, 0]), int(new_point[0, 0, 1])
+
 
 def format_detections(detections, x_offset=0, y_offset=0):
     formatted_detections = []
     for det in detections:
-        center_x = int((det[0] + det[2]) / 2 + x_offset)
-        center_y = int((det[1] + det[3]) / 2 + y_offset)
-        detected_object = {
+        # Assuming detections from YOLO are passed as a NumPy array directly
+        formatted_detections.append({
             "objectName": det[5],
             "confidence": float(det[4]),
-            "x1": int(det[0] + x_offset),
-            "y1": int(det[1] + y_offset),
-            "x2": int(det[2] + x_offset),
-            "y2": int(det[3] + y_offset),
-            "center": (center_x, center_y)
-        }
-        formatted_detections.append(detected_object)
+            "x1": int(det[0]),
+            "y1": int(det[1]),
+            "x2": int(det[2]),
+            "y2": int(det[3]),
+            "center": (int((det[0] + det[2]) / 2), int((det[1] + det[3]) / 2))
+        })
     return formatted_detections
+
+def apply_homography(H, image=None, detections=None):
+    transformed_image = None
+    transformed_detections = []
+    if image is not None:
+        transformed_image = cv2.warpPerspective(image, H, (image.shape[1], image.shape[0]))
+    if detections:
+        for det in detections:
+            x1, y1, x2, y2 = apply_homography_to_bbox(det['x1'], det['y1'], det['x2'], det['y2'], H)
+            center_x, center_y = apply_homography_to_point(det['center'][0], det['center'][1], H)
+            transformed_detections.append({
+                "objectName": det['objectName'],
+                "confidence": det['confidence'],
+                "x1": x1,
+                "y1": y1,
+                "x2": x2,
+                "y2": y2,
+                "center": (center_x, center_y)
+            })
+    return transformed_image, transformed_detections
+
 
 def display_image_with_detections(frame, detections, window_name="Detections"):
     cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
@@ -64,5 +71,7 @@ def display_image_with_detections(frame, detections, window_name="Detections"):
     for det in detections:
         cv2.rectangle(frame, (det['x1'], det['y1']), (det['x2'], det['y2']), (0, 255, 0), 2)
         cv2.putText(frame, f"{det['objectName']} {det['confidence']:.2f}", (det['x1'], det['y1'] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
-        cv2.circle(frame, det['center'], 5, (0, 0, 255), -1)
+        center = tuple(int(c) for c in det['center'])  # Convert to tuple of integers if not already
+        cv2.circle(frame, center, 5, (0, 0, 255), -1)
+
     cv2.imshow(window_name, frame)
