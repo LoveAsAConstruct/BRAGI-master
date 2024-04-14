@@ -3,7 +3,7 @@ import numpy as np
 import glob
 import pickle
 
-def calibrate_camera(calibration_images_path, chessboard_size=(8, 8)):
+def calibrate_camera(calibration_images_path, chessboard_size=(7, 7)):
     criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 0.001)
     objp = np.zeros((chessboard_size[1]*chessboard_size[0], 3), np.float32)
     objp[:, :2] = np.mgrid[0:chessboard_size[0], 0:chessboard_size[1]].T.reshape(-1, 2)
@@ -62,7 +62,7 @@ def undistort_image(image, camera_matrix, dist_coeffs):
 if __name__ == "__main__":
     calibrate_camera('lens_calibration_images')
     mtx, dist = load_calibration_parameters()
-    img = cv2.imread('lens_calibration_images\calibration_11_20240414-133837.jpg')
+    img = cv2.imread('lens_calibration_images\calibration_2_20240414-142257.jpg')
     undistorted_img = undistort_image(img, mtx, dist)
     cv2.imshow('Undistorted Image', undistorted_img)
     cv2.waitKey(0)
