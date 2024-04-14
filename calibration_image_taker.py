@@ -16,7 +16,7 @@ def capture_calibration_images(save_path, interval=3, total_images=20):
         os.makedirs(save_path)
     
     # Start video capture
-    cap = cv2.VideoCapture(0)  # Use the default camera
+    cap = cv2.VideoCapture(1)  # Use the default camera
     if not cap.isOpened():
         print("Error: Unable to open camera.")
         return
@@ -50,5 +50,5 @@ def capture_calibration_images(save_path, interval=3, total_images=20):
         print("Released camera and closed windows.")
 
 # Usage example
-save_path = 'path_to_save_calibration_images'
+save_path = 'lens_calibration_images'
 capture_calibration_images(save_path, interval=3, total_images=20)
