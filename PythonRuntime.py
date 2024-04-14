@@ -6,7 +6,7 @@ import numpy as np
 app = Flask(__name__)
 
 # Load YOLOv5 model
-model = torch.hub.load('ultralytics/yolov5', 'yolov5n', pretrained=True)
+model = torch.hub.load('ultralytics/yolov5', 'yolov5n.pt', pretrained=True)
 
 # Initialize video capture
 cap = cv2.VideoCapture(0)
