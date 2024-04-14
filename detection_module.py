@@ -4,8 +4,9 @@ import torch
 import cv2
 import numpy as np
 
-def load_yolov5_model(weights_path: str = 'yolov5n.pt'):
-    model = torch.hub.load('ultralytics/yolov5', 'custom', path=weights_path, force_reload=True)
+def load_yolov5_model(weights_path: str = 'yolov5n.pt', device='cuda' if torch.cuda.is_available() else 'cpu'):
+    model = torch.hub.load('ultralytics/yolov5', 'custom', path=weights_path, force_reload=True).to(device)
+    model.eval()
     return model
 
 def load_homography_matrix(matrix_path: str = 'homography_matrix.npy'):
@@ -34,7 +35,8 @@ def apply_homography(H, image=None, detections=None):
                 "x1": apply_homography_to_bbox(det[0], det[1], det[2], det[3], H)[0],
                 "y1": apply_homography_to_bbox(det[0], det[1], det[2], det[3], H)[1],
                 "x2": apply_homography_to_bbox(det[0], det[1], det[2], det[3], H)[2],
-                "y2": apply_homography_to_bbox(det[0], det[1], det[2], det[3], H)[3]
+                "y2": apply_homography_to_bbox(det[0], det[1], det[2], det[3], H)[3],
+                "center": ((det[0]+det[2])/2, (det[1]+det[3])/2)
             } for det in detections
         ]
     return transformed_image, transformed_detections
@@ -42,19 +44,25 @@ def apply_homography(H, image=None, detections=None):
 def format_detections(detections, x_offset=0, y_offset=0):
     formatted_detections = []
     for det in detections:
+        center_x = int((det[0] + det[2]) / 2 + x_offset)
+        center_y = int((det[1] + det[3]) / 2 + y_offset)
         detected_object = {
             "objectName": det[5],
             "confidence": float(det[4]),
             "x1": int(det[0] + x_offset),
             "y1": int(det[1] + y_offset),
             "x2": int(det[2] + x_offset),
-            "y2": int(det[3] + y_offset)
+            "y2": int(det[3] + y_offset),
+            "center": (center_x, center_y)
         }
         formatted_detections.append(detected_object)
     return formatted_detections
 
 def display_image_with_detections(frame, detections, window_name="Detections"):
+    cv2.namedWindow(window_name, cv2.WINDOW_NORMAL)
+    cv2.resizeWindow(window_name, frame.shape[1], frame.shape[0])
     for det in detections:
         cv2.rectangle(frame, (det['x1'], det['y1']), (det['x2'], det['y2']), (0, 255, 0), 2)
         cv2.putText(frame, f"{det['objectName']} {det['confidence']:.2f}", (det['x1'], det['y1'] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+        cv2.circle(frame, det['center'], 5, (0, 0, 255), -1)
     cv2.imshow(window_name, frame)

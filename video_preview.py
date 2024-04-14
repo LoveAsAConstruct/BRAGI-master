@@ -6,7 +6,7 @@ from detection_module import load_yolov5_model, detect_objects, format_detection
 def main():
     model = load_yolov5_model()
     H = load_homography_matrix()
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     show_transformed = False
 
     if not cap.isOpened():
