@@ -47,10 +47,9 @@ def apply_homography_to_point(x, y, H):
 def format_detections(detections, x_offset=0, y_offset=0):
     formatted_detections = []
     for det in detections:
-        # Assuming detections from YOLO are passed as a NumPy array directly
         formatted_detections.append({
-            "objectName": det[5],
-            "confidence": float(det[4]),
+            "objectName": str(det[5]),  # Ensure the name is a string
+            "confidence": float(det[4]),  # Explicitly convert to Python float
             "x1": int(det[0]),
             "y1": int(det[1]),
             "x2": int(det[2]),
@@ -58,6 +57,7 @@ def format_detections(detections, x_offset=0, y_offset=0):
             "center": (int((det[0] + det[2]) / 2), int((det[1] + det[3]) / 2))
         })
     return formatted_detections
+
 
 def apply_homography(H, image=None, detections=None):
     transformed_image = None
