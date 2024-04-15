@@ -1,21 +1,17 @@
 from detection_module import (
     load_yolov5_model, detect_objects, format_detections, display_image_with_detections, 
-    load_homography_matrix, apply_homography
+    load_homography_matrix, apply_homography, read_frame, cap
 )
 import cv2
 def main():
     model = load_yolov5_model()
     H = load_homography_matrix()
-    cap = cv2.VideoCapture(1)
 
     show_transformed = False
-    if not cap.isOpened():
-        print("Error: Unable to open video source.")
-        return
 
     try:
         while True:
-            ret, frame = cap.read()
+            ret, frame = read_frame()
             if not ret:
                 print("Failed to grab frame.")
                 break
@@ -37,8 +33,8 @@ def main():
                 show_transformed = not show_transformed  # Toggle transformation view
 
     finally:
-        cap.release()
         cv2.destroyAllWindows()
+        cap.release()
 
 if __name__ == "__main__":
     main()

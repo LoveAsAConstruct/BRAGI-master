@@ -2,18 +2,28 @@ from flask import Flask, jsonify
 import cv2
 import torch
 import numpy as np
-
+from lens_correction_stream import *
 app = Flask(__name__)
 
 # Load YOLOv5 model
 model = torch.hub.load('ultralytics/yolov5', 'yolov5n.pt', pretrained=True)
 
-# Initialize video capture
-cap = cv2.VideoCapture(0)
 
 # Load homography matrix
 homographyMatrix = np.load('homography_matrix.npy')
 
+camera_matrix, dist_coeffs = load_calibration_parameters()
+cap = cv2.VideoCapture(SOURCE)
+
+# Setting camera resolution
+desired_width = WIDTH
+desired_height = HEIGHT
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, desired_width)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, desired_height)
+
+if not cap.isOpened():
+    print("Error: Unable to open video source.")
+    raise RuntimeError
 
 def apply_homography_to_bbox(x1, y1, x2, y2, H = homographyMatrix):
     """Apply homography to bounding box coordinates."""

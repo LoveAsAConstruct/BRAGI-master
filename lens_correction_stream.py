@@ -8,15 +8,18 @@ def load_calibration_parameters(filename='calibration_parameters.pkl'):
         calibration_data = pickle.load(f)
     return calibration_data['camera_matrix'], calibration_data['dist_coeff']
 
-def undistort_frame(frame, camera_matrix, dist_coeffs):
+def undistort_frame(frame, camera_matrix, dist_coeffs, resize = True):
     """ Apply undistortion transformation to a single frame and crop to valid area. """
     h, w = frame.shape[:2]
-    new_camera_matrix, roi = cv2.getOptimalNewCameraMatrix(camera_matrix, dist_coeffs, (w, h), 1, (w, h))
+    new_camera_matrix, roi = cv2.getOptimalNewCameraMatrix(camera_matrix, dist_coeffs, (w, h), 1, (w, h))  
     undistorted_frame = cv2.undistort(frame, camera_matrix, dist_coeffs, None, new_camera_matrix)
     # Crop the image to the ROI to remove the warping at the edges
     x, y, roi_width, roi_height = roi
     undistorted_frame_cropped = undistorted_frame[y:y+roi_height, x:x+roi_width]
-    return undistorted_frame_cropped
+    if resize:
+        return cv2.resize(undistorted_frame_cropped, (WIDTH, HEIGHT))
+    else:
+        return undistorted_frame_cropped
 
 def preview_undistorted_video():
     camera_matrix, dist_coeffs = load_calibration_parameters()
@@ -42,9 +45,7 @@ def preview_undistorted_video():
 
         # Resize frames to ensure they are displayed properly
         frame_resized = cv2.resize(frame, (desired_width, desired_height))
-        undistorted_frame_resized = cv2.resize(undistorted_frame, (desired_width, desired_height))
-
-        combined_frame = np.hstack((frame_resized, undistorted_frame_resized))
+        combined_frame = np.hstack((frame_resized, undistorted_frame))
         cv2.imshow("Original | Undistorted", combined_frame)
 
         if cv2.waitKey(1) == 27:  # Press ESC to exit

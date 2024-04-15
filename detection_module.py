@@ -3,7 +3,22 @@
 import torch
 import cv2
 import numpy as np
+from lens_correction_stream import *
+camera_matrix, dist_coeffs = load_calibration_parameters()
+cap = cv2.VideoCapture(SOURCE)
 
+# Setting camera resolution
+desired_width = WIDTH
+desired_height = HEIGHT
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, desired_width)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, desired_height)
+
+if not cap.isOpened():
+    print("Error: Unable to open video source.")
+
+def read_frame(undistort = True):
+    ret, frame = cap.read()
+    return ret, undistort_frame(frame, camera_matrix, dist_coeffs) if undistort else frame
 def load_yolov5_model(weights_path: str = 'yolov5n.pt', device='cuda' if torch.cuda.is_available() else 'cpu'):
     model = torch.hub.load('ultralytics/yolov5', 'custom', path=weights_path, force_reload=True).to(device)
     model.eval()
