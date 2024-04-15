@@ -18,7 +18,7 @@ def click_event(event, x, y, flags, param):
         print(f"Point selected: ({x}, {y})")
 
 # Load your image
-img = cv2.imread(r"C:\Users\NuVu\Downloads\BRAGI-master\BRAGI-master\LensCorrectionImages\DistortedImage.png")
+img = cv2.imread(r"LensCorrectionImages\Ugrid_square.png")
 cv2.imshow('image', img)
 
 # Bind the click event function to the OpenCV window
