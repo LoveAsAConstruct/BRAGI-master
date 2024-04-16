@@ -399,7 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textPrefab: {fileID: 4282733585460024916, guid: 95c66c8df93fa084aacee4dd80c1c681, type: 3}
-  camera: {fileID: 1545840668}
+  active_camera: {fileID: 1545840668}
 --- !u!4 &189407259
 Transform:
   m_ObjectHideFlags: 0
