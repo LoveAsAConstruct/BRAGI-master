@@ -49,6 +49,7 @@ def apply_homography_to_point(x, y, H):
 def format_detections(detections, x_offset=0, y_offset=0):
     formatted_detections = []
     for det in detections:
+        print(f"object name {det[5]}")
         formatted_detections.append({
             "objectName": str(det[5]),  # Ensure the name is a string
             "confidence": float(det[4]),  # Explicitly convert to Python float

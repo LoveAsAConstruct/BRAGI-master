@@ -4,7 +4,7 @@ from detection_module import (
 )
 import cv2
 def main():
-    model = load_yolov5_model()
+    model = load_yolov5_model(weights_path="yolov5x.pt")
     H = load_homography_matrix()
 
     show_transformed = False
