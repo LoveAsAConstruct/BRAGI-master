@@ -18,6 +18,8 @@ if not cap.isOpened():
 
 def read_frame(undistort = True):
     ret, frame = cap.read()
+    if not ret:
+        return False, None
     return ret, undistort_frame(frame, camera_matrix, dist_coeffs) if undistort else frame
 def load_yolov5_model(weights_path: str = 'yolov5n.pt', device='cuda' if torch.cuda.is_available() else 'cpu'):
     model = torch.hub.load('ultralytics/yolov5', 'custom', path=weights_path, force_reload=True).to(device)

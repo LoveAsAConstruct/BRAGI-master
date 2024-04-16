@@ -17,6 +17,7 @@ detections_global = []
 lock = Lock()
 
 def update_display():
+    print("updating display")
     cv2.namedWindow("Detections", cv2.WINDOW_NORMAL)
     while True:
         if frame_global is not None:
@@ -26,7 +27,10 @@ def update_display():
                 cv2.rectangle(frame, (det['x1'], det['y1']), (det['x2'], det['y2']), (0, 255, 0), 2)
                 cv2.putText(frame, f"{det['objectName']} {det['confidence']:.2f}", (det['x1'], det['y1'] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
             lock.release()
+            print("showframe")
             cv2.imshow("Detections", frame)
+        else:
+            print("noframe")
         if cv2.waitKey(1) == 27:  # Exit on ESC
             break
     cv2.destroyAllWindows()
@@ -37,12 +41,12 @@ def handle_detection_request():
     ret, frame = read_frame()
     if not ret:
         return jsonify({"error": "Failed to capture frame"}), 400
-
+    print("Framecaptured")
+    # Continue with detection if frame capture was successful
     detections = detect_objects(model, frame)
     formatted_detections = format_detections(detections)
-
     _, transformed_detections = apply_homography(H_matrix, detections=formatted_detections)
-
+    
     lock.acquire()
     frame_global = frame.copy()
     detections_global = transformed_detections.copy()
@@ -50,7 +54,8 @@ def handle_detection_request():
 
     return jsonify(transformed_detections)
 
+
 if __name__ == '__main__':
     display_thread = Thread(target=update_display)
     display_thread.start()
-    app.run(debug=True, use_reloader=False)  # Ensure Flask doesn't restart the server and duplicate threads
+    app.run(debug=True, use_reloader=False)
