@@ -28,6 +28,7 @@ def update_display():
                 cv2.putText(frame, f"{det['objectName']} {det['confidence']:.2f}", (det['x1'], det['y1'] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
             lock.release()
             #print("showframe")
+            print(frame.shape[:2])
             cv2.imshow("Detections", frame)
         if cv2.waitKey(1) == 27:  # Exit on ESC
             break

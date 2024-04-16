@@ -7,7 +7,7 @@ using System.Collections.Generic; // Import this for using List<>
 public class YoloRequester : MonoBehaviour
 {
     public GameObject textPrefab; // Assign your text prefab in the inspector
-    public Camera camera;
+    public Camera active_camera;
     private string url = "http://127.0.0.1:5000/detect";
     private bool isRequestInProgress = false;
     private List<GameObject> instantiatedTextObjects = new List<GameObject>();
@@ -39,7 +39,7 @@ public class YoloRequester : MonoBehaviour
             try
             {
                 var detections = JsonUtility.FromJson<RootObject>("{\"Items\":" + request.downloadHandler.text + "}");
-                float scalingFactor = 1; //Camera.main.pixelWidth / 580; // Calculate scaling factor based on a 640 pixel width
+                float scalingFactor = active_camera.pixelWidth / 580; // Calculate scaling factor based on a 640 pixel width
                 foreach (var item in detections.Items)
                 {
                     // Apply the scaling factor to the coordinates
@@ -49,24 +49,24 @@ public class YoloRequester : MonoBehaviour
                     // Adjust the Z value as needed to ensure it's within the camera's clipping range
                     float depth = 100f; // Example depth; adjust this based on your scene's scale and camera setup
 
-                    Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, Camera.main.nearClipPlane + depth));
+                    Vector3 worldPosition = active_camera.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, active_camera.nearClipPlane + depth));
 
                     var textInstance = Instantiate(textPrefab, worldPosition, Quaternion.identity);
 
                     // Make the text face the camera
-                    textInstance.transform.forward = Camera.main.transform.forward;
+                    textInstance.transform.forward = active_camera.transform.forward;
 
                     var textComponent = textInstance.GetComponent<TextMeshPro>(); // Or GetComponent<TextMeshProUGUI>() if it's a UI element
                     textComponent.text = $"{item.objectName} ({item.confidence})";
                     instantiatedTextObjects.Add(textInstance);
                 }
 
-                Vector3 pos = Camera.main.ScreenToWorldPoint(new Vector3(Camera.main.pixelWidth/2, Camera.main.pixelHeight/2, Camera.main.nearClipPlane + 100));
+                Vector3 pos = active_camera.ScreenToWorldPoint(new Vector3(active_camera.pixelWidth/2, active_camera.pixelHeight/2, active_camera.nearClipPlane + 100));
 
                 var text = Instantiate(textPrefab, pos, Quaternion.identity);
 
                 // Make the text face the camera
-                text.transform.forward = Camera.main.transform.forward;
+                text.transform.forward = active_camera.transform.forward;
 
                 var textc = text.GetComponent<TextMeshPro>(); // Or GetComponent<TextMeshProUGUI>() if it's a UI element
                 textc.text = $"Center";
