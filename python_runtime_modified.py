@@ -29,8 +29,6 @@ def update_display():
             lock.release()
             #print("showframe")
             cv2.imshow("Detections", frame)
-        else:
-            #print("noframe")
         if cv2.waitKey(1) == 27:  # Exit on ESC
             break
     cv2.destroyAllWindows()
