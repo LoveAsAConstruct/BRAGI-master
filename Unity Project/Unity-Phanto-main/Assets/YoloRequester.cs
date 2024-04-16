@@ -39,7 +39,7 @@ public class YoloRequester : MonoBehaviour
             try
             {
                 var detections = JsonUtility.FromJson<RootObject>("{\"Items\":" + request.downloadHandler.text + "}");
-                float scalingFactor = Camera.main.pixelWidth / 580; // Calculate scaling factor based on a 640 pixel width
+                float scalingFactor = 1 //Camera.main.pixelWidth / 580; // Calculate scaling factor based on a 640 pixel width
                 foreach (var item in detections.Items)
                 {
                     // Apply the scaling factor to the coordinates
