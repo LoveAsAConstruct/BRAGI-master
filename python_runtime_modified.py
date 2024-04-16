@@ -17,7 +17,7 @@ detections_global = []
 lock = Lock()
 
 def update_display():
-    print("updating display")
+    #print("updating display")
     cv2.namedWindow("Detections", cv2.WINDOW_NORMAL)
     while True:
         if frame_global is not None:
@@ -27,10 +27,10 @@ def update_display():
                 cv2.rectangle(frame, (det['x1'], det['y1']), (det['x2'], det['y2']), (0, 255, 0), 2)
                 cv2.putText(frame, f"{det['objectName']} {det['confidence']:.2f}", (det['x1'], det['y1'] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
             lock.release()
-            print("showframe")
+            #print("showframe")
             cv2.imshow("Detections", frame)
         else:
-            print("noframe")
+            #print("noframe")
         if cv2.waitKey(1) == 27:  # Exit on ESC
             break
     cv2.destroyAllWindows()
@@ -58,4 +58,5 @@ def handle_detection_request():
 if __name__ == '__main__':
     display_thread = Thread(target=update_display)
     display_thread.start()
+    print("started display thread")
     app.run(debug=True, use_reloader=False)
