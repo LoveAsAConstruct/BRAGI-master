@@ -49,7 +49,7 @@ public class YoloRequester : MonoBehaviour
                     // Adjust the Z value as needed to ensure it's within the camera's clipping range
                     float depth = 100f; // Example depth; adjust this based on your scene's scale and camera setup
 
-                    Vector3 worldPosition = active_camera.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, active_camera.nearClipPlane + depth));
+                    Vector3 worldPosition = active_camera.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, active_camera.nearClipPlane + depth),Camera.MonoOrStereoscopicEye.Left);
 
                     var textInstance = Instantiate(textPrefab, worldPosition, Quaternion.identity);
 
@@ -61,7 +61,7 @@ public class YoloRequester : MonoBehaviour
                     instantiatedTextObjects.Add(textInstance);
                 }
 
-                Vector3 pos = active_camera.ScreenToWorldPoint(new Vector3(active_camera.pixelWidth/2, active_camera.pixelHeight/2, active_camera.nearClipPlane + 100));
+                Vector3 pos = active_camera.ScreenToWorldPoint(new Vector3(270*scalingFactor, 270 * scalingFactor, active_camera.nearClipPlane + 100));
 
                 var text = Instantiate(textPrefab, pos, Quaternion.identity);
 
