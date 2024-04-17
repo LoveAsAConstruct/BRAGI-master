@@ -23,9 +23,12 @@ def update_display():
         if frame_global is not None:
             lock.acquire()
             frame = frame_global.copy()
+            frame = cv2.warpPerspective(frame, H_matrix, frame.shape[:2],flags=cv2.INTER_LINEAR)
             for det in detections_global:
                 cv2.rectangle(frame, (det['x1'], det['y1']), (det['x2'], det['y2']), (0, 255, 0), 2)
                 cv2.putText(frame, f"{det['objectName']} {det['confidence']:.2f}", (det['x1'], det['y1'] - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 2)
+            center = tuple(int(c) for c in det['center'])  # Convert to tuple of integers if not already
+            cv2.circle(frame, center, 5, (0, 0, 255), -1)
             lock.release()
             #print("showframe")
             print(frame.shape[:2])
