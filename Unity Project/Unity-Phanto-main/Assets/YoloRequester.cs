@@ -39,7 +39,8 @@ public class YoloRequester : MonoBehaviour
             try
             {
                 var detections = JsonUtility.FromJson<RootObject>("{\"Items\":" + request.downloadHandler.text + "}");
-                float scalingFactor = active_camera.pixelWidth / 580; // Calculate scaling factor based on a 640 pixel width
+                float inputWidth = 1080;
+                float scalingFactor = active_camera.pixelWidth / inputWidth; // Calculate scaling factor based on a 640 pixel width
                 foreach (var item in detections.Items)
                 {
                     // Apply the scaling factor to the coordinates
@@ -61,7 +62,7 @@ public class YoloRequester : MonoBehaviour
                     instantiatedTextObjects.Add(textInstance);
                 }
 
-                Vector3 pos = active_camera.ScreenToWorldPoint(new Vector3(270*scalingFactor, 270 * scalingFactor, active_camera.nearClipPlane + 100));
+                Vector3 pos = active_camera.ScreenToWorldPoint(new Vector3(inputWidth /2* scalingFactor, inputWidth/2 * scalingFactor, active_camera.nearClipPlane + 100));
 
                 var text = Instantiate(textPrefab, pos, Quaternion.identity);
 
