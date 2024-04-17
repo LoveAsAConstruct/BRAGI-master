@@ -45,7 +45,7 @@ def apply_homography_to_point(x, y, H):
     new_point = cv2.perspectiveTransform(point, H)
     return int(new_point[0, 0, 0]), int(new_point[0, 0, 1])
 
-
+# These kinda work
 class_names = [
     "person", "bicycle", "car", "motorcycle", "airplane",
     "bus", "train", "truck", "boat", "traffic light",
