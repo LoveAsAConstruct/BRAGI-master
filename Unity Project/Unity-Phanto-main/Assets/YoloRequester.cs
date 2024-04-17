@@ -44,8 +44,8 @@ public class YoloRequester : MonoBehaviour
                 foreach (var item in detections.Items)
                 {
                     // Apply the scaling factor to the coordinates
-                    float scaledX1 = item.x1 * scalingFactor;
-                    float scaledY1 = item.y1 * scalingFactor;
+                    float scaledX1 = (item.x1+item.x2)/2 * scalingFactor;
+                    float scaledY1 = (inputWidth-(item.y1+item.y2)/2) * scalingFactor;
 
                     // Adjust the Z value as needed to ensure it's within the camera's clipping range
                     float depth = 100f; // Example depth; adjust this based on your scene's scale and camera setup

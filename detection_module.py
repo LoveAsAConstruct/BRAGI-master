@@ -46,13 +46,35 @@ def apply_homography_to_point(x, y, H):
     return int(new_point[0, 0, 0]), int(new_point[0, 0, 1])
 
 
+class_names = [
+    "person", "bicycle", "car", "motorcycle", "airplane",
+    "bus", "train", "truck", "boat", "traffic light",
+    "fire hydrant", "stop sign", "parking meter", "bench", "bird",
+    "cat", "dog", "horse", "sheep", "cow",
+    "elephant", "bear", "zebra", "giraffe", "backpack",
+    "umbrella", "handbag", "tie", "suitcase", "frisbee",
+    "skis", "snowboard", "sports ball", "kite", "baseball bat",
+    "baseball glove", "skateboard", "surfboard", "tennis racket", "bottle",
+    "wine glass", "cup", "fork", "knife", "spoon",
+    "bowl", "banana", "apple", "sandwich", "orange",
+    "broccoli", "carrot", "hot dog", "pizza", "donut",
+    "cake", "chair", "couch", "potted plant", "bed",
+    "dining table", "toilet", "TV", "laptop", "mouse",
+    "remote", "keyboard", "cell phone", "microwave", "oven",
+    "toaster", "sink", "refrigerator", "book", "clock",
+    "vase", "scissors", "teddy bear", "hair drier", "toothbrush"
+]
+
 def format_detections(detections, x_offset=0, y_offset=0):
     formatted_detections = []
+    #print(f"Detections: {detections.xyxy[0]}")
     for det in detections:
-        print(f"object name {det[5]}")
+
+        object_name = class_names[int(det[5])]  # Convert class ID to the corresponding name
+        print("detected "+object_name)
         formatted_detections.append({
-            "objectName": str(det[5]),  # Ensure the name is a string
-            "confidence": float(det[4]),  # Explicitly convert to Python float
+            "objectName": object_name,
+            "confidence": float(det[4]),
             "x1": int(det[0]),
             "y1": int(det[1]),
             "x2": int(det[2]),

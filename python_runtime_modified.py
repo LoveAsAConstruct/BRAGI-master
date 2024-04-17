@@ -31,7 +31,7 @@ def update_display():
                 cv2.circle(frame, center, 5, (0, 0, 255), -1)
             lock.release()
             #print("showframe")
-            print(frame.shape[:2])
+            #print(frame.shape[:2])
             cv2.imshow("Detections", frame)
         if cv2.waitKey(1) == 27:  # Exit on ESC
             break
