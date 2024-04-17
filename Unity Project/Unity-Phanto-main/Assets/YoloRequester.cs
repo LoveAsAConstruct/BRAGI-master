@@ -44,11 +44,11 @@ public class YoloRequester : MonoBehaviour
                 foreach (var item in detections.Items)
                 {
                     // Apply the scaling factor to the coordinates
-                    float scaledX1 = (item.x1+item.x2)/2 * scalingFactor;
+                    float scaledX1 = ((item.x1+item.x2)/2+200) * scalingFactor;
                     float scaledY1 = (inputWidth-(item.y1+item.y2)/2) * scalingFactor;
 
                     // Adjust the Z value as needed to ensure it's within the camera's clipping range
-                    float depth = 100f; // Example depth; adjust this based on your scene's scale and camera setup
+                    float depth = 200f; // Example depth; adjust this based on your scene's scale and camera setup
 
                     Vector3 worldPosition = active_camera.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, active_camera.nearClipPlane + depth),Camera.MonoOrStereoscopicEye.Left);
 
