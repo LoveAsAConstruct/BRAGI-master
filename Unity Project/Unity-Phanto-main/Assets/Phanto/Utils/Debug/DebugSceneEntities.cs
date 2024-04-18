@@ -18,7 +18,7 @@ public class DebugSceneEntities : MonoBehaviour
     private readonly List<OVRScenePlane> _scenePlanes = new List<OVRScenePlane>();
     private readonly List<OVRSceneVolume> _sceneVolumes = new List<OVRSceneVolume>();
 
-    private bool _visible = false;
+    private bool _visible = true;
     private readonly Vector3[] _linePoints = new Vector3[4];
 
     private void Awake()
