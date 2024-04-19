@@ -4,3 +4,5 @@ yolov5x.pt
 env/
 lens_calibration_images/
 authentication/*
+authentication/*.*
+!authentication/
