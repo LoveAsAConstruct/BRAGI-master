@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class WordDefinition : ScriptableObject
+[CreateAssetMenu(fileName = "Data", menuName = "WordData/WordContainer", order = 1)]
+public class WordContainer : ScriptableObject
 {
-    public string Word;
+    public string englishWord;
     public string spanishWord;
-    public string pronounciation;
+    public string englishPhonetics;
+    public string spanishPhonetics;
+    public AudioClip pronounciationClip;
     public string definition;
     public enum Gender { female, male}
     public Gender gender = Gender.male;
