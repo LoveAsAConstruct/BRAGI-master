@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6512abec3ad2c6248bf39cef2184ed5e, type: 3}
+  m_Name: word_9
+  m_EditorClassIdentifier: 
+  englishWord: traffic light
+  spanishWord: "sem\xE1foro"
+  englishPhonetics: 
+  spanishPhonetics: 
+  pronounciationClip: {fileID: 0}
+  definition: A signalling device positioned at a road intersection or pedestrian
+    crossing to indicate when it may be safe to drive, ride or walk, using a universal
+    colour code.
+  gender: 1
+  tags: 
+  background: {fileID: 0}
