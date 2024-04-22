@@ -12,10 +12,11 @@ def generate_csharp(csv_path, output_path):
         
         for index, row in df.iterrows():
             asset_name = f"word_{index}"
+            audio_path = f"Assets/PronounciationAudio/{row['Translated Word']}.mp3".replace('\\', '/')
             file.write(f"        WordContainer asset_{index} = ScriptableObject.CreateInstance<WordContainer>();\n")
             file.write(f"        asset_{index}.englishWord = \"{row['Original Word']}\";\n")
             file.write(f"        asset_{index}.spanishWord = \"{row['Translated Word']}\";\n")
-            file.write(f"        asset_{index}.pronounciationClip = AssetDatabase.LoadAssetAtPath<AudioClip>(\"Assets/Data/Audio/{os.path.basename(row['Audio File Path'])}\");\n")
+            file.write(f"        asset_{index}.pronounciationClip = AssetDatabase.LoadAssetAtPath<AudioClip>(\"{audio_path}\");\n")
             file.write(f"        asset_{index}.definition = \"{row['Definition'].replace('\"', '\\"').replace('\n', '\\n')}\";\n")
             file.write(f"        AssetDatabase.CreateAsset(asset_{index}, \"Assets/Data/WordData/{asset_name}.asset\");\n")
             file.write(f"        AssetDatabase.SaveAssets();\n")
@@ -25,5 +26,5 @@ def generate_csharp(csv_path, output_path):
         file.write("}\n")
 
 csv_path = "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\translation\\translated_words.csv"
-output_path = "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Scripts\\CreateWordDataAssets.cs"
+output_path = "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Editor\\CreateWordDataAssets.cs"
 generate_csharp(csv_path, output_path)
