@@ -7,7 +7,7 @@ using Oculus;
 
 public class YoloRequester : MonoBehaviour
 {
-    public GameObject textPrefab; // Assign your text prefab in the inspector
+    public GameObject objectPrefab; // Assign your text prefab in the inspector
     public Camera active_camera;
     private string url = "http://127.0.0.1:5000/detect";
     private bool isRequestInProgress = false;
@@ -49,11 +49,11 @@ public class YoloRequester : MonoBehaviour
                     float depth = 200f;
                     Vector3 worldPosition = active_camera.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, active_camera.nearClipPlane + depth), Camera.MonoOrStereoscopicEye.Left);
 
-                    var textInstance = Instantiate(textPrefab, worldPosition, Quaternion.identity);
-                    textInstance.transform.forward = active_camera.transform.forward;
-                    var textComponent = textInstance.GetComponent<TextMeshPro>();
-                    textComponent.text = $"{item.objectName} ({item.confidence})";
-                    instantiatedTextObjects.Add(textInstance);
+                    var objectInstance = Instantiate(objectPrefab, worldPosition, Quaternion.identity);
+                    objectInstance.transform.forward = active_camera.transform.forward;
+                    var flashcardManager = objectInstance.GetComponent<FlashcardInitializer>();
+                    flashcardManager.SetFlashcard($"{item.objectName}");
+                    instantiatedTextObjects.Add(objectInstance);
                 }
             }
             catch (System.Exception e)
