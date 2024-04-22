@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: reloj
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: a3a1d02e17e6b4746912ee45cd98b8cd, type: 3}
   definition: An instrument used to measure or keep track of time; a non-portable
     timepiece.
   gender: 1

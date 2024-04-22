@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "br\xF3coli"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 492815cb1f866c74ba7044d648e29e5d, type: 3}
   definition: A plant, Brassica oleracea var. italica, of the cabbage family, Brassicaceae;
     especially, the tree-shaped flower and stalk that are eaten as a vegetable.
   gender: 1

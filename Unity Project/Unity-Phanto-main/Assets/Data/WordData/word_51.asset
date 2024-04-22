@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: zanahoria
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: f33bfbdd59cf6374babc1154078bb576, type: 3}
   definition: A vegetable with a nutritious, juicy, sweet root that is often orange
     in colour, Daucus carota, especially the subspecies sativus in the family Apiaceae.
   gender: 1

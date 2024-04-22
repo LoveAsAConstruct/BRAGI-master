@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: refrigerador
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 0427ccf6db7fbd248b062dc8a9dc2613, type: 3}
   definition: A household appliance used for keeping food fresh by refrigeration
     (short form fridge).
   gender: 1

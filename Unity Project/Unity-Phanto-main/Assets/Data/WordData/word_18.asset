@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: oveja
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 36eadbf210b3f1442825509eef510a5b, type: 3}
   definition: A woolly ruminant of the genus Ovis.
   gender: 1
   tags: 

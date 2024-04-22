@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: teclado
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: a74ac8b420787594da66e9e59553ac34, type: 3}
   definition: (etc.) A set of keys used to operate a typewriter, computer etc.
   gender: 1
   tags: 

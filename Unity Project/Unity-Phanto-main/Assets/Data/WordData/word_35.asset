@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "guante de b\xE9isbol"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 0c057b7c044e1cd4394895df8674230a, type: 3}
   definition: No definition found
   gender: 1
   tags: 

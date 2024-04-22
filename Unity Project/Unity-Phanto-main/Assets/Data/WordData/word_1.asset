@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: bicicleta
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: c13c9f0abe023d446a0a74635bcdc9a2, type: 3}
   definition: "A vehicle that has two wheels, one behind the other, a steering handle,
     and a saddle seat or seats and is usually propelled by the action of a rider\u2019s
     feet upon pedals."

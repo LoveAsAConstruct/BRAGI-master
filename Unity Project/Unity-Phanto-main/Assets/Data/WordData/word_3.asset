@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: motocicleta
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: bbf01b6b41919c64eba4891006955db2, type: 3}
   definition: An open-seated motor vehicle with handlebars instead of a steering
     wheel, and having two (or sometimes three) wheels.
   gender: 1

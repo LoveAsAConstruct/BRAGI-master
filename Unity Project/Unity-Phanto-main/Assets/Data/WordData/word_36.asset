@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: patineta
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: da64a01f8d0b75c49b5fc2bf2e4596e1, type: 3}
   definition: A narrow, wooden or plastic platform mounted on pairs of wheels, on
     which one stands and propels oneself by pushing along the ground with one foot.
   gender: 1

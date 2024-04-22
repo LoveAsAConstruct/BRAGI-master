@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "autob\xFAs"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: dff98d5f342aade46b8dea230b4f38e1, type: 3}
   definition: A motor vehicle for transporting large numbers of people along roads.
   gender: 1
   tags: 

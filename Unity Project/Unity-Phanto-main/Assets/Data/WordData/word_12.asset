@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "parqu\xEDmetro"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 8d15c9556aecc674684bc414f4397fef, type: 3}
   definition: A device, located by a parking space, that collects payment in exchange
     for the right to park a vehicle for a specified time.
   gender: 1

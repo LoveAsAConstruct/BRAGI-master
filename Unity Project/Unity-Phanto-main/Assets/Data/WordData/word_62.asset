@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: TELEVISOR
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 5a2a6c5a0bdb0d54b8a3f79d0f5aac60, type: 3}
   definition: The assessed value of an asset from which the tax owing is computed.
   gender: 1
   tags: 

@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: tabla de surf
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 31c0d4203b3a09e41b7ea9378e93538d, type: 3}
   definition: A shaped waterproof plank, usually made of wood or foam and reinforced
     plastic, used to surf on waves.
   gender: 1

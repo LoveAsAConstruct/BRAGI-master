@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: cuchillo
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 2d75062a49d4d864ca42557531c981de, type: 3}
   definition: A utensil or a tool designed for cutting, consisting of a flat piece
     of hard material, usually steel or other metal (the blade), usually sharpened
     on one edge, attached to a handle. The blade may be pointed for piercing.

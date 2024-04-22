@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: cama
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 1b71c12109c5c004385185780dbd1912, type: 3}
   definition: A piece of furniture, usually flat and soft, on which to rest or sleep.
   gender: 1
   tags: 

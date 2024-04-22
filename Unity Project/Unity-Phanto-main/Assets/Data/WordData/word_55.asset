@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: pastel
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: a31e375e8a6d66d4cb717a2a5fc7f3c0, type: 3}
   definition: A rich, sweet dessert food, typically made of flour, sugar and eggs
     and baked in an oven, and often covered in icing.
   gender: 1

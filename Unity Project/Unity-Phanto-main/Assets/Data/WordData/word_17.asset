@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: caballo
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: c26b34e8b24219842ae1308e845cf01e, type: 3}
   definition: Any of several animals related to Equus ferus caballus.
   gender: 1
   tags: 

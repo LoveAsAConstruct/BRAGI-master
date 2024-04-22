@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: snowboard
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 661d6c4b34037cd42939c09708a3b5dd, type: 3}
   definition: A board, somewhat like a broad ski, or a very long skateboard with
     no wheels, used in the sport of snowboarding.
   gender: 1

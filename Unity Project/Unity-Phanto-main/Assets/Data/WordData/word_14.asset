@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "p\xE1jaro"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 15125cffb1f75b94480ee5360203fda5, type: 3}
   definition: A member of the class of animals Aves in the phylum Chordata, characterized
     by being warm-blooded, having feathers and wings usually capable of flight, and
     laying eggs.

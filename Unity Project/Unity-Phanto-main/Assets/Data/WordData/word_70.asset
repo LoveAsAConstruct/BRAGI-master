@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: tostadora
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: f6d7fd733e44a5e4882004b57a99803c, type: 3}
   definition: One who toasts (cooks lightly by browning).
   gender: 1
   tags: 

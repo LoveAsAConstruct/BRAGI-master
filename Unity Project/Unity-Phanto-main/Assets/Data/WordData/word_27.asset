@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: atar
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: c63748cc73a381c44b6f412e20276faa, type: 3}
   definition: A knot; a fastening.
   gender: 1
   tags: 

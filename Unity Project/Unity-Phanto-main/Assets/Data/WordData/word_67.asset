@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "Tel\xE9fono m\xF3vil"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 7394114f2b5b8fd4b96288c736517cd2, type: 3}
   definition: A portable, wireless telephone, which changes antenna connections seamlessly
     during travel from one radio reception cell to another without losing the party-to-party
     call connection.

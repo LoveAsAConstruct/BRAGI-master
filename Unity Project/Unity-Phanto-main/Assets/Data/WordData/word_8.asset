@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: bote
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: e5366fee1aa0ed642a25b0f54e1d37fc, type: 3}
   definition: A craft used for transportation of goods, fishing, racing, recreational
     cruising, or military use on or in the water, propelled by oars or outboard motor
     or inboard motor or by wind.

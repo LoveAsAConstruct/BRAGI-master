@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: bol
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 69c72a82166018e4a97a30126a3efed1, type: 3}
   definition: A roughly hemispherical container used to hold, mix or present food,
     such as salad, fruit or soup, or other items.
   gender: 1

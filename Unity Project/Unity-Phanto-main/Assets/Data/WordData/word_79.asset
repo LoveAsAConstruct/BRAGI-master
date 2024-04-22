@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: cepillo de dientes
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: e2f284bb6c5e30c418f53c69dbd65a58, type: 3}
   definition: A brush, used with toothpaste, for cleaning the teeth.
   gender: 1
   tags: 

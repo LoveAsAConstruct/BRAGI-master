@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: tijeras
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 8f6bc9a6746f2014fbc9d89470f20826, type: 3}
   definition: One blade on a pair of scissors.
   gender: 1
   tags: 

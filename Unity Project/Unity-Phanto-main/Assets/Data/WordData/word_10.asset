@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: boca de incendio
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: fc5abb735b6a0be4089eba7675c773e8, type: 3}
   definition: A device used by firefighters to obtain water from the main supply,
     consisting of a barrel, connections for hose and a valve assembly.
   gender: 1

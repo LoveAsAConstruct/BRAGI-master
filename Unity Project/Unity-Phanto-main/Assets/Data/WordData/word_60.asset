@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: comedor
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 2f5aea7bb453c8d4094b0d3b9c95cbfa, type: 3}
   definition: A table, usually in a dining room, on which meals are served.
   gender: 1
   tags: 

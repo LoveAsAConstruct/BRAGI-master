@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "rat\xF3n"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: f0912a43e16911243b130f7dd430f895, type: 3}
   definition: Any small rodent of the genus Mus.
   gender: 1
   tags: 

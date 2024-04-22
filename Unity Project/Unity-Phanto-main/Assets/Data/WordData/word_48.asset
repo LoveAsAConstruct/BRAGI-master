@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "s\xE1ndwich"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 4a4908fb0e1d9a64d8ebd332a0821634, type: 3}
   definition: A dish or foodstuff where two or more slices of bread serve as the
     wrapper or container of some other food.
   gender: 1

@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: disco volador
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: fabd93e0fb064d74d853a759c3b3c50e, type: 3}
   definition: A disk-shaped gliding toy.
   gender: 1
   tags: 

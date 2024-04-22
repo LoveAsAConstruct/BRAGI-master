@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: tren
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: e03bea89bd442614ca3bef4b03936fcf, type: 3}
   definition: Elongated portion.
   gender: 1
   tags: 

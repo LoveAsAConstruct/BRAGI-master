@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: libro
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 5daa9bfa6dfeda2499dd01ae1581561d, type: 3}
   definition: A collection of sheets of paper bound together to hinge at one edge,
     containing printed or written material, pictures, etc.
   gender: 1

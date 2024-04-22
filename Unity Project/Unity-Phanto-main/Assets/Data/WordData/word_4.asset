@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "avi\xF3n"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 21de61f4b5b3eb84eab07db9d5d07d2b, type: 3}
   definition: A powered heavier-than-air aircraft with fixed wings.
   gender: 1
   tags: 

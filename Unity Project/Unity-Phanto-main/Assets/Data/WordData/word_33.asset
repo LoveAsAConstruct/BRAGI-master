@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: ver
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 205c4979e58485e42855485e37c0deac, type: 3}
   definition: No definition found
   gender: 1
   tags: 

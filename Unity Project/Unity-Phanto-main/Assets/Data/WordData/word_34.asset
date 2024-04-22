@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "bate de b\xE9isbol"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 7f48a80b2b19c3e45bb1b197072be8e1, type: 3}
   definition: No definition found
   gender: 1
   tags: 

@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: persona
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: e466698060ac92c4d86456fa8591cc3a, type: 3}
   definition: An individual; usually a human being.
   gender: 1
   tags: 

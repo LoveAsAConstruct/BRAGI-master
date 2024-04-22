@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: planta en maceta
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: f964c4e18f3c75842b4ea2b067bce4be, type: 3}
   definition: No definition found
   gender: 1
   tags: 

@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: elefante
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: bdcd10d2fa4724b4e998f9186dc920b7, type: 3}
   definition: A mammal of the order Proboscidea, having a trunk, and two large ivory
     tusks jutting from the upper jaw.
   gender: 1

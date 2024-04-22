@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: vaca
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: b271b0e2043ce0c4e836b420e339e2b7, type: 3}
   definition: (properly) An adult female of the species Bos taurus, especially one
     that has calved.
   gender: 1

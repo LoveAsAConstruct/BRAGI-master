@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "sem\xE1foro"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 0502bd11b996abd4b816bd6f2291e9cc, type: 3}
   definition: A signalling device positioned at a road intersection or pedestrian
     crossing to indicate when it may be safe to drive, ride or walk, using a universal
     colour code.

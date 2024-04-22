@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: banana
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: fe3af1101283caf4bbe9664273875aea, type: 3}
   definition: An elongated curved tropical fruit that grows in bunches and has a
     creamy flesh and a smooth skin.
   gender: 1

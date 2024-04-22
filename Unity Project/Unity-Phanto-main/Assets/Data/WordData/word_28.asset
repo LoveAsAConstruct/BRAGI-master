@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: maleta
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: d6267e66c6dc72f40bb862c6bd412b7d, type: 3}
   definition: A large (usually rectangular) piece of luggage used for carrying clothes,
     and sometimes suits, when travelling.
   gender: 1

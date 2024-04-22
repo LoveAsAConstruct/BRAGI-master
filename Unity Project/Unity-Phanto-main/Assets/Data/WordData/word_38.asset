@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: raqueta de tenis
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: e4d37f8136f0ce941949d4214a062ac7, type: 3}
   definition: No definition found
   gender: 1
   tags: 

@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: horno
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 33ad143261207d44bb617d77e8ef0af2, type: 3}
   definition: A chamber used for baking or heating.
   gender: 1
   tags: 

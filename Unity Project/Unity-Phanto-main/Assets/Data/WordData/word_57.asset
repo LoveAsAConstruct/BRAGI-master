@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "sof\xE1"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 9946337791ebf56488f409ca0d8b8057, type: 3}
   definition: Couch grass, a species of persistent grass, Elymus repens, usually
     considered a weed.
   gender: 1

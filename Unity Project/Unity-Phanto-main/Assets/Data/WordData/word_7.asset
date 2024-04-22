@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "cami\xF3n"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 373108fc427d63f41af7385d05830591, type: 3}
   definition: A small wheel or roller, specifically the wheel of a gun carriage.
   gender: 1
   tags: 

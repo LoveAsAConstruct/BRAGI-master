@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: gato
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: ea9cd17cd686f0044af48a8087644c10, type: 3}
   definition: 'An animal of the family Felidae:'
   gender: 1
   tags: 

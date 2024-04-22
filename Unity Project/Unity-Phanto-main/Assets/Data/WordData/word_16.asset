@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: perro
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 06a61578019f4c64a8b1a78b107ca205, type: 3}
   definition: A mammal, Canis familiaris or Canis lupus familiaris, that has been
     domesticated for thousands of years, of highly variable appearance due to human
     breeding.

@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: Copa de vino
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 328c80a8773d50e4e95c16cbb2e10622, type: 3}
   definition: A glass vessel, normally with a stem, from which wine is drunk.
   gender: 1
   tags: 

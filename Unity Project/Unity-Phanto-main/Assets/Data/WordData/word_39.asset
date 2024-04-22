@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: botella
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: a8aafdf5e2689054c95ae38bafb3092b, type: 3}
   definition: A container, typically made of glass or plastic and having a tapered
     neck, used primarily for holding liquids.
   gender: 1

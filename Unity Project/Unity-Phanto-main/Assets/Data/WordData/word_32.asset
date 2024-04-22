@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: pelota deportiva
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: a2359978f42b10847ad017f3974706c8, type: 3}
   definition: No definition found
   gender: 1
   tags: 

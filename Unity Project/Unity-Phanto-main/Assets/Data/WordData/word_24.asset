@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: mochila
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 27afdec845ecb2e488d32623d222469a, type: 3}
   definition: "A knapsack, sometimes mounted on a light frame, but always supported
     by straps, worn on a person\u2019s back for the purpose of carrying things, especially
     when hiking, or on a student's back when carrying books."

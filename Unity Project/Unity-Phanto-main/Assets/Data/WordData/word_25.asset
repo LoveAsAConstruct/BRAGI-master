@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: paraguas
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 36d9182d8c18f8b408ed8f5929a5462c, type: 3}
   definition: Cloth-covered frame used for protection against rain or sun.
   gender: 1
   tags: 

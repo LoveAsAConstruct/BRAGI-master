@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "se\xF1al de stop"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 5f56f8628810ba34988f441edbea35a9, type: 3}
   definition: No definition found
   gender: 1
   tags: 

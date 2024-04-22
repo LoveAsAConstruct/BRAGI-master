@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: oso de peluche
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 10f39f6790519e34483e7e27c2184ce4, type: 3}
   definition: A plush toy in the shape of a bear.
   gender: 1
   tags: 

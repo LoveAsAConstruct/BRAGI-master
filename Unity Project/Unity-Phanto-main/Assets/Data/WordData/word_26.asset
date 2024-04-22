@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: bolso
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 0bd2cc77a8f429644831e06b03ccd611, type: 3}
   definition: (mainly Commonwealth) A small bag used by women (or sometimes by men)
     for carrying various small personal items.
   gender: 1

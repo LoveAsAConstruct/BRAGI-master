@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: auto
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: e20deb3eecaa00e478d7038d1d972e50, type: 3}
   definition: A wheeled vehicle that moves independently, with at least three wheels,
     powered mechanically, steered by a driver and mostly for personal transportation.
   gender: 1

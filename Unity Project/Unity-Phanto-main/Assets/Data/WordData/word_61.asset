@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "ba\xF1o"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 8705d5a69705f734abb029ae97df4ab1, type: 3}
   definition: A covering of linen, silk, or tapestry, spread over a dressing table
     in a chamber or dressing room.
   gender: 1

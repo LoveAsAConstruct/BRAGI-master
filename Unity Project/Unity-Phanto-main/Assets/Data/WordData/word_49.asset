@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: naranja
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 248db6a7f60687c42af4025032f87d83, type: 3}
   definition: An evergreen tree of the genus Citrus such as Citrus sinensis.
   gender: 1
   tags: 

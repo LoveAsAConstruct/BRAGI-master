@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "esqu\xEDs"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 80b17fe8f08db124e86254da66c9b01c, type: 3}
   definition: One of a pair of long flat runners designed for gliding over snow or
     water
   gender: 1

@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: hundir
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: e1e59f4a71f4faa4ba25d5beec1ff233, type: 3}
   definition: A basin used for holding water for washing.
   gender: 1
   tags: 

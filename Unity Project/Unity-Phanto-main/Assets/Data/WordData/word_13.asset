@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: banco
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 198c09df79870b247a6b8d23b20d4fcd, type: 3}
   definition: A long seat with or without a back, found for example in parks and
     schools.
   gender: 1

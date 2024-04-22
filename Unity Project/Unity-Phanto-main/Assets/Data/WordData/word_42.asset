@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: tenedor
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 6e08da27f1df26a4eacf53416c8d7758, type: 3}
   definition: A pronged tool having a long straight handle, used for digging, lifting,
     throwing etc.
   gender: 1

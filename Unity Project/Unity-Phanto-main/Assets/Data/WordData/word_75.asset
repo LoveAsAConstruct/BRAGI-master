@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: florero
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 641791cb4bef4d948897dacf3793492e, type: 3}
   definition: An upright open container used mainly for displaying fresh, dried,
     or artificial flowers.
   gender: 1

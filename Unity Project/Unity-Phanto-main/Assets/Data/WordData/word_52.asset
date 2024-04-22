@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: Hot dog
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: de96063e322811841a515b0dafadf90a, type: 3}
   definition: A sandwich consisting of a frankfurter, or wiener, in a bread roll,
     usually served with ketchup, mustard, relish, etc.
   gender: 1

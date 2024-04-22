@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: Secadora de pelo
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 037a1d77c3aa97e42b34dac9b048f946, type: 3}
   definition: No definition found
   gender: 1
   tags: 

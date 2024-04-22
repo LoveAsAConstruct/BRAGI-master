@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: "computadora port\xE1til"
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 89d93c4a7ad61ba45ab03f6474c95a75, type: 3}
   definition: A laptop computer.
   gender: 1
   tags: 

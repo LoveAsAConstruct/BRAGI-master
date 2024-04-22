@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: oso
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 239fde707d41d184b81ffaed3d1f4de5, type: 3}
   definition: A large omnivorous mammal, related to the dog and raccoon, having shaggy
     hair, a very small tail, and flat feet; a member of family Ursidae.
   gender: 1

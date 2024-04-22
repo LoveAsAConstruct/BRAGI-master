@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: remoto
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 5a7d441819a7f214ba1c224f847d5508, type: 3}
   definition: An element of broadcast programming originating away from the station's
     or show's control room.
   gender: 1

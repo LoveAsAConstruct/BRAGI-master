@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: silla
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 6f9ea3817f400ba489dface27370fb0d, type: 3}
   definition: An item of furniture used to sit on or in, comprising a seat, legs,
     back, and sometimes arm rests, for use by one person. Compare stool, couch, sofa,
     settee, loveseat and bench.

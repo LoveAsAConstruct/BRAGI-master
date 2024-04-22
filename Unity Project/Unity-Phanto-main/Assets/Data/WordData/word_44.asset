@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: cuchara
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 522f398424eec834bb4343fde4232710, type: 3}
   definition: An implement for eating or serving; a scooped utensil whose long handle
     is straight, in contrast to a ladle.
   gender: 1

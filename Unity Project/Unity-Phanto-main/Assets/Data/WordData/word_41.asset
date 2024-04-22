@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: taza
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 74df1cf72424af24cbecc34faff5e423, type: 3}
   definition: A concave vessel for drinking from, usually made of opaque material
     (as opposed to a glass) and with a handle.
   gender: 1

@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: cebra
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 22592f0a45fc58c4ba4fd9cd26b5f2f4, type: 3}
   definition: 'Any of three species of genus Equus: E. grevyi, E. quagga, or E. zebra,
     all with black and white stripes and native to Africa.'
   gender: 1

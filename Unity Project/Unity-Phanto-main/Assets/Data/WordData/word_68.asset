@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: microonda
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: 5f6119b119842c747b95cf16b28d9547, type: 3}
   definition: An electromagnetic wave with wavelength between that of infrared light
     and radio waves.
   gender: 1

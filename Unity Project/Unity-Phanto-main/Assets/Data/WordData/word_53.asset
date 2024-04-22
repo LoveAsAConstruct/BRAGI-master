@@ -16,7 +16,7 @@ MonoBehaviour:
   spanishWord: pizza
   englishPhonetics: 
   spanishPhonetics: 
-  pronounciationClip: {fileID: 0}
+  pronounciationClip: {fileID: 8300000, guid: fc5539f466f43ab4fbd415e30d6e004f, type: 3}
   definition: A baked Italian dish of a thinly rolled bread dough crust typically
     topped before baking with tomato sauce, cheese and other ingredients such as
     meat, vegetables or fruit
