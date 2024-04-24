@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3466780450665355687}
   - component: {fileID: 9144987838018381963}
   - component: {fileID: 6764999755053235915}
+  - component: {fileID: 1763503091278230654}
+  - component: {fileID: 155393303545353481}
   m_Layer: 0
   m_Name: Dot
   m_TagString: Untagged
@@ -105,3 +107,32 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1763503091278230654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7608408651802260870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fcd94b65afad064983f007420451c3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  englishText: {fileID: 0}
+  spanishText: {fileID: 0}
+  definitionText: {fileID: 0}
+  audioSource: {fileID: 0}
+--- !u!114 &155393303545353481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7608408651802260870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee92b6a6f643d344398eee99889de678, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSource: {fileID: 0}
