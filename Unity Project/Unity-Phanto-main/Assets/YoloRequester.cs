@@ -12,7 +12,7 @@ public class YoloRequester : MonoBehaviour
     private string url = "http://127.0.0.1:5000/detect";
     private bool isRequestInProgress = false;
     private List<GameObject> instantiatedTextObjects = new List<GameObject>();
-
+    public CardOffset offset;
     void Update()
     {
         // Check if the right trigger is pressed and no request is currently in progress
@@ -44,9 +44,9 @@ public class YoloRequester : MonoBehaviour
                 float scalingFactor = active_camera.pixelWidth / inputWidth;
                 foreach (var item in detections.Items)
                 {
-                    float scaledX1 = ((item.x1 + item.x2) / 2 + 200) * scalingFactor;
-                    float scaledY1 = (inputWidth - (item.y1 + item.y2) / 2) * scalingFactor;
-                    float depth = 200f;
+                    float scaledX1 = ((item.x1 + item.x2) / 2 + offset.offset.x) * scalingFactor;
+                    float scaledY1 = (inputWidth - (item.y1 + item.y2) / 2 + offset.offset.y) * scalingFactor;
+                    float depth = 70f;
                     Vector3 worldPosition = active_camera.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, active_camera.nearClipPlane + depth), Camera.MonoOrStereoscopicEye.Left);
 
                     var objectInstance = Instantiate(objectPrefab, worldPosition, Quaternion.identity);
