@@ -44,10 +44,27 @@ public class YoloRequester : MonoBehaviour
                 float scalingFactor = active_camera.pixelWidth / inputWidth;
                 foreach (var item in detections.Items)
                 {
+                    // Calculate screen positions for raycasting
                     float scaledX1 = ((item.x1 + item.x2) / 2 + offset.offset.x) * scalingFactor;
                     float scaledY1 = (inputWidth - (item.y1 + item.y2) / 2 + offset.offset.y) * scalingFactor;
-                    float depth = 4f;
-                    Vector3 worldPosition = active_camera.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, active_camera.nearClipPlane + depth), Camera.MonoOrStereoscopicEye.Left);
+                    Vector3 screenPosition = new Vector3(scaledX1, scaledY1, 0);
+
+                    // Cast a ray from the camera through the calculated screen position
+                    Ray ray = active_camera.ScreenPointToRay(screenPosition);
+                    RaycastHit hit;
+                    float depth = 4f; // Default depth if no object is hit
+                    Vector3 worldPosition;
+                    // Check if the ray hits any collider in the scene
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        // Use the hit point as the world position
+                        worldPosition = hit.point;
+                    }
+                    else
+                    {
+                        // If nothing is hit, use the default depth
+                        worldPosition = active_camera.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, active_camera.nearClipPlane + depth));
+                    }
 
                     var objectInstance = Instantiate(objectPrefab, worldPosition, Quaternion.identity);
                     objectInstance.transform.forward = active_camera.transform.forward;
