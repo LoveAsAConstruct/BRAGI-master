@@ -46,7 +46,7 @@ public class YoloRequester : MonoBehaviour
                 {
                     float scaledX1 = ((item.x1 + item.x2) / 2 + offset.offset.x) * scalingFactor;
                     float scaledY1 = (inputWidth - (item.y1 + item.y2) / 2 + offset.offset.y) * scalingFactor;
-                    float depth = 70f;
+                    float depth = 4f;
                     Vector3 worldPosition = active_camera.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, active_camera.nearClipPlane + depth), Camera.MonoOrStereoscopicEye.Left);
 
                     var objectInstance = Instantiate(objectPrefab, worldPosition, Quaternion.identity);
