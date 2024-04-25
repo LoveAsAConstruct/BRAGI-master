@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0e80fc70b055604cb2243783b9c2251, type: 3}
+  m_Name: word_44
+  m_EditorClassIdentifier: 
+  englishWord: spoon
+  spanishWord: cuchara
+  englishPhonetics: 
+  spanishPhonetics: 
+  pronounciationClip: {fileID: 8300000, guid: 522f398424eec834bb4343fde4232710, type: 3}
+  definition: An implement for eating or serving; a scooped utensil whose long handle
+    is straight, in contrast to a ladle.
+  gender: 1
+  tags: 
+  background: {fileID: 0}
