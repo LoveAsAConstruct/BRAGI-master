@@ -57,6 +57,54 @@ def handle_detection_request():
     return jsonify(transformed_detections)
 
 
+@app.route('/listen', methods=['POST'])
+def handle_listen():
+    # Record audio for 30 seconds
+    audio_format = pyaudio.paInt16  # 16-bit resolution
+    num_channels = 1  # mono
+    sample_rate = 16000  # 16 kHz
+    chunk_size = 1024  # Buffer size
+    record_seconds = 30  # Duration of recording
+
+    audio = pyaudio.PyAudio()
+    stream = audio.open(format=audio_format, channels=num_channels, rate=sample_rate, input=True, frames_per_buffer=chunk_size)
+    frames = []
+
+    for i in range(0, int(sample_rate / chunk_size * record_seconds)):
+        data = stream.read(chunk_size)
+        frames.append(data)
+
+    stream.stop_stream()
+    stream.close()
+    audio.terminate()
+
+    # Save the recorded audio to a WAV file
+    temp_audio_file = 'temp_audio.wav'
+    wf = wave.open(temp_audio_file, 'wb')
+    wf.setnchannels(num_channels)
+    wf.setsampwidth(audio.get_sample_size(audio_format))
+    wf.setframerate(sample_rate)
+    wf.writeframes(b''.join(frames))
+    wf.close()
+
+    # Send audio to Google Speech-to-Text
+    with open(temp_audio_file, 'rb') as audio_file:
+        audio_content = audio_file.read()
+    
+    audio = speech.RecognitionAudio(content=audio_content)
+    config = speech.RecognitionConfig(
+        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+        sample_rate_hertz=16000,
+        language_code="en-US"
+    )
+
+    response = client.recognize(config=config, audio=audio)
+
+    # Extract transcript
+    transcript = [result.alternatives[0].transcript for result in response.results]
+
+    return jsonify({"Transcript": transcript})
+
 if __name__ == '__main__':
     display_thread = Thread(target=update_display)
     display_thread.start()
