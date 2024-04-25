@@ -4,7 +4,12 @@ import torch
 import numpy as np
 from threading import Thread, Lock
 from detection_module import read_frame, load_yolov5_model, detect_objects, apply_homography, format_detections
+import pyaudio
+import wave
+from google.cloud import speech
 
+# Setup Google Cloud Speech client
+client = speech.SpeechClient()
 app = Flask(__name__)
 
 # Load the model and homography matrix
