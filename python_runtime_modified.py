@@ -62,27 +62,31 @@ def handle_detection_request():
     return jsonify(transformed_detections)
 
 
-@app.route('/listen', methods=['POST'])
+@app.route('/listen', methods=['POST', 'GET'])
 def handle_listen():
-    # Record audio for 30 seconds
+    print("Recording audio")
     audio_format = pyaudio.paInt16  # 16-bit resolution
     num_channels = 1  # mono
-    sample_rate = 16000  # 16 kHz
-    chunk_size = 1024  # Buffer size
-    record_seconds = 30  # Duration of recording
+    sample_rate = 44100  # 44.1 kHz
+    chunk_size = 4096  # Larger buffer size
+    record_seconds = 5  # Duration of recording
 
     audio = pyaudio.PyAudio()
     stream = audio.open(format=audio_format, channels=num_channels, rate=sample_rate, input=True, frames_per_buffer=chunk_size)
     frames = []
 
-    for i in range(0, int(sample_rate / chunk_size * record_seconds)):
-        data = stream.read(chunk_size)
-        frames.append(data)
-
-    stream.stop_stream()
-    stream.close()
-    audio.terminate()
-
+    try:
+        for i in range(0, int(sample_rate / chunk_size * record_seconds)):
+            data = stream.read(chunk_size)
+            frames.append(data)
+    except IOError as e:
+        print("Error recording audio: ", e)
+    finally:
+        stream.stop_stream()
+        stream.close()
+        audio.terminate()
+    
+    print("Audio recorded")
     # Save the recorded audio to a WAV file
     temp_audio_file = 'temp_audio.wav'
     wf = wave.open(temp_audio_file, 'wb')
@@ -99,15 +103,15 @@ def handle_listen():
     audio = speech.RecognitionAudio(content=audio_content)
     config = speech.RecognitionConfig(
         encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
-        sample_rate_hertz=16000,
-        language_code="en-US"
+        sample_rate_hertz=44100,
+        language_code="es-ES"
     )
 
     response = client.recognize(config=config, audio=audio)
 
     # Extract transcript
     transcript = [result.alternatives[0].transcript for result in response.results]
-
+    print(f"transcribed {transcript}")
     return jsonify({"Transcript": transcript})
 
 if __name__ == '__main__':

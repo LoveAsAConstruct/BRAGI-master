@@ -9,7 +9,7 @@ public class FlashcardInitializer : MonoBehaviour
     public TMP_Text spanishText;
     public TMP_Text definitionText;
     public AudioSource audioSource;
-
+    public WordContainer wordData;
     private List<string> words = new List<string> {
         "person", "bicycle", "car", "motorcycle", "airplane",
         "bus", "train", "truck", "boat", "traffic light",
@@ -31,14 +31,14 @@ public class FlashcardInitializer : MonoBehaviour
 
     public void SetFlashcard(string inputEnglishWord)
     {
-        WordContainer wordData = FindWordDataByEnglish(inputEnglishWord);
+        wordData = FindWordDataByEnglish(inputEnglishWord);
         if (wordData != null)
         {
             englishText.text = wordData.englishWord;
             spanishText.text = wordData.spanishWord;
             definitionText.text = wordData.definition;
             audioSource.clip = wordData.pronounciationClip;
-            audioSource.Play(); // Play audio when the word is set
+            //audioSource.Play(); // Play audio when the word is set
         }
         else
         {
