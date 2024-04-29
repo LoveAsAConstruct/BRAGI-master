@@ -114,6 +114,35 @@ def handle_listen():
     print(f"transcribed {transcript}")
     return jsonify({"Transcript": transcript})
 
+from flask import request
+
+@app.route('/log', methods=['POST'])
+def log_interaction():
+    data = request.json
+    user_id = data.get('userid')
+    english_word = data.get('word')
+    correct = data.get('correct')
+    
+    if None in (user_id, english_word, correct):
+        return jsonify({'error': 'Missing data'}), 400
+
+    conn = sqlite3.connect('data.db')
+    cursor = conn.cursor()
+    try:
+        cursor.execute('''
+        INSERT INTO Interactions (user_id, english_word, correct)
+        VALUES (?, ?, ?)
+        ''', (user_id, english_word, correct))
+        conn.commit()
+    except sqlite3.Error as e:
+        conn.rollback()
+        conn.close()
+        return jsonify({'error': str(e)}), 500
+    
+    conn.close()
+    return jsonify({'message': 'Interaction logged successfully'}), 200
+
+
 if __name__ == '__main__':
     display_thread = Thread(target=update_display)
     display_thread.start()
