@@ -85,16 +85,20 @@ public class FlashcardInteractionManager : MonoBehaviour
 
     IEnumerator SendLogToServer(int userId, string word, bool isCorrect)
     {
-        WWWForm form = new WWWForm();
-        form.AddField("userid", userId);
-        form.AddField("word", word);
-        form.AddField("correct", isCorrect.ToString());
+        LogData requestData = new LogData(userId, word, isCorrect);
+        string jsonData = JsonUtility.ToJson(requestData);
+        Debug.Log("Request data: " + jsonData);  // This should now correctly display the JSON structure.
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost:5000/log", form))
+        using (UnityWebRequest www = new UnityWebRequest("http://localhost:5000/log", "POST"))
         {
+            byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(jsonData);
+            www.uploadHandler = new UploadHandlerRaw(bodyRaw);
+            www.downloadHandler = new DownloadHandlerBuffer();
+            www.SetRequestHeader("Content-Type", "application/json");
+
             yield return www.SendWebRequest();
 
-            if (www.result != UnityWebRequest.Result.Success)
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
             {
                 Debug.LogError("Log failed: " + www.error);
             }
@@ -104,6 +108,24 @@ public class FlashcardInteractionManager : MonoBehaviour
             }
         }
     }
+
+
+
+    [System.Serializable]
+    public class LogData
+    {
+        public int userid;
+        public string word;
+        public bool correct;
+
+        public LogData(int userId, string word, bool isCorrect)
+        {
+            this.userid = userId;
+            this.word = word;
+            this.correct = isCorrect;
+        }
+    }
+
 
     string RemoveAccents(string input)
     {
