@@ -113,33 +113,43 @@ def handle_listen():
     transcript = [result.alternatives[0].transcript for result in response.results]
     print(f"transcribed {transcript}")
     return jsonify({"Transcript": transcript})
+import sqlite3
+from flask import Flask, request, jsonify
 
-from flask import request
 
 @app.route('/log', methods=['POST'])
 def log_interaction():
-    data = request.json
+    if not request.is_json:
+        print("Error: The request content type is not JSON")
+        return jsonify({'error': 'Request must be JSON'}), 400
+
+    data = request.get_json()
     user_id = data.get('userid')
     english_word = data.get('word')
     correct = data.get('correct')
-    
-    if None in (user_id, english_word, correct):
+
+    if user_id is None or english_word is None or correct is None:
+        print(f"Error: Missing data - User ID: {user_id}, Word: {english_word}, Correct: {correct}")
         return jsonify({'error': 'Missing data'}), 400
 
-    conn = sqlite3.connect('data.db')
-    cursor = conn.cursor()
     try:
+        conn = sqlite3.connect('data.db')
+        cursor = conn.cursor()
         cursor.execute('''
-        INSERT INTO Interactions (user_id, english_word, correct)
-        VALUES (?, ?, ?)
+            INSERT INTO Interactions (user_id, english_word, correct)
+            VALUES (?, ?, ?)
         ''', (user_id, english_word, correct))
         conn.commit()
     except sqlite3.Error as e:
         conn.rollback()
         conn.close()
+        print(f"SQLite Error: {e}")
         return jsonify({'error': str(e)}), 500
-    
-    conn.close()
+    finally:
+        if conn:
+            conn.close()
+
+    print("Interaction logged successfully")
     return jsonify({'message': 'Interaction logged successfully'}), 200
 
 
