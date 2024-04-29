@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using System;
 
 public class FlashcardInteractionManager : MonoBehaviour
 {
@@ -68,8 +69,9 @@ public class FlashcardInteractionManager : MonoBehaviour
 
         string normalizedResponse = RemoveAccents(response.ToLower());
         string normalizedWordToCheck = RemoveAccents(currentWordToCheck.ToLower());
+        int threshold = 2;
 
-        if (normalizedResponse.Contains(normalizedWordToCheck))
+        if (IsCloseMatch(normalizedResponse, normalizedWordToCheck, threshold))
         {
             Debug.Log("Word found: " + normalizedWordToCheck + ", in " + normalizedResponse);
             onCorrectResponse.Invoke();
@@ -82,7 +84,45 @@ public class FlashcardInteractionManager : MonoBehaviour
             StartCoroutine(SendLogToServer(userId, normalizedWordToCheck, false));
         }
     }
+    int ComputeLevenshteinDistance(string s1, string s2)
+    {
+        int len1 = s1.Length;
+        int len2 = s2.Length;
+        int[,] d = new int[len1 + 1, len2 + 1];
 
+        if (len1 == 0) return len2;
+        if (len2 == 0) return len1;
+
+        for (int i = 0; i <= len1; i++) d[i, 0] = i;
+        for (int j = 0; j <= len2; j++) d[0, j] = j;
+
+        for (int i = 1; i <= len1; i++)
+        {
+            for (int j = 1; j <= len2; j++)
+            {
+                int cost = (s2[j - 1] == s1[i - 1]) ? 0 : 1;
+                d[i, j] = Math.Min(
+                    Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1),
+                    d[i - 1, j - 1] + cost);
+            }
+        }
+        return d[len1, len2];
+    }
+
+    bool IsCloseMatch(string response, string phraseToCheck, int threshold)
+    {
+        int n = phraseToCheck.Length;
+        response = response.ToLower().Trim(); // Normalize the response
+        phraseToCheck = phraseToCheck.ToLower().Trim(); // Normalize the word/phrase to check
+
+        for (int i = 0; i <= response.Length - n; i++)
+        {
+            string segment = response.Substring(i, n);
+            if (ComputeLevenshteinDistance(segment, phraseToCheck) <= threshold)
+                return true;
+        }
+        return false;
+    }
     IEnumerator SendLogToServer(int userId, string word, bool isCorrect)
     {
         LogData requestData = new LogData(userId, word, isCorrect);
