@@ -68,7 +68,7 @@ def handle_listen():
     audio_format = pyaudio.paInt16  # 16-bit resolution
     num_channels = 1  # mono
     sample_rate = 44100  # 44.1 kHz
-    chunk_size = 4096  # Larger buffer size
+    chunk_size = 220500  # Larger buffer size
     record_seconds = 5  # Duration of recording
 
     audio = pyaudio.PyAudio()
