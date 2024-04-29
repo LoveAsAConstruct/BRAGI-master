@@ -15,6 +15,7 @@ public class FlashcardInteractionManager : MonoBehaviour
 
     public UnityEvent onCorrectResponse;  // Event triggered when the response is correct
     public UnityEvent onIncorrectResponse;  // Event triggered when the response is incorrect
+    public int userId; // User ID to send with the log
 
     void Start()
     {
@@ -61,24 +62,46 @@ public class FlashcardInteractionManager : MonoBehaviour
 
     void CheckResponse(string response)
     {
-        // Determine which word to check
         string currentWordToCheck = (flashcardInitializer != null && !string.IsNullOrEmpty(flashcardInitializer.wordData.spanishWord))
             ? flashcardInitializer.wordData.spanishWord
             : wordToCheck;
 
-        // Convert response and word to check to lowercase and remove accents
         string normalizedResponse = RemoveAccents(response.ToLower());
         string normalizedWordToCheck = RemoveAccents(currentWordToCheck.ToLower());
 
         if (normalizedResponse.Contains(normalizedWordToCheck))
         {
-            Debug.Log("Word found: " + normalizedWordToCheck +", in " +normalizedResponse);
+            Debug.Log("Word found: " + normalizedWordToCheck + ", in " + normalizedResponse);
             onCorrectResponse.Invoke();
+            StartCoroutine(SendLogToServer(userId, normalizedWordToCheck, true));
         }
         else
         {
             Debug.Log("Word not found: " + normalizedWordToCheck + ", in " + normalizedResponse);
             onIncorrectResponse.Invoke();
+            StartCoroutine(SendLogToServer(userId, normalizedWordToCheck, false));
+        }
+    }
+
+    IEnumerator SendLogToServer(int userId, string word, bool isCorrect)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("userid", userId);
+        form.AddField("word", word);
+        form.AddField("correct", isCorrect.ToString());
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost:5000/log", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.result != UnityWebRequest.Result.Success)
+            {
+                Debug.LogError("Log failed: " + www.error);
+            }
+            else
+            {
+                Debug.Log("Log success: " + www.downloadHandler.text);
+            }
         }
     }
 
