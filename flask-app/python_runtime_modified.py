@@ -198,10 +198,10 @@ def login():
         conn.close()
         if user is not None and check_password_hash(user['password'], password):
             session['user_id'] = user['id']
+            session['username'] = user['username']  # Storing username in session
             return redirect(url_for('dashboard'))
         return render_template('login.html', error='Invalid username or password')
     return render_template('login.html')
-
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -215,6 +215,7 @@ def register():
         user = conn.execute('SELECT * FROM Users WHERE username = ?', (username,)).fetchone()
         conn.close()
         session['user_id'] = user['id']
+        session['username'] = user['username']
         return redirect(url_for('dashboard'))
     
     return render_template('register.html')
