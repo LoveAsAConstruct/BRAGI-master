@@ -4,6 +4,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 def generate_plots():
+    print("Generating plots")
     conn = sqlite3.connect('flask-app\data\data.db')
     query = """
     SELECT id, user_id, english_word, current_time, correct
@@ -27,7 +28,10 @@ def generate_plots():
 
     # Set x-axis limits to fit the data
     plt.xlim(df['current_time'].min(), df['current_time'].max())
+    start_date = '2024-04-27'  # Example start date
+    end_date = '2024-04-30'    # Example end date
 
+    plt.xlim(pd.to_datetime(start_date), pd.to_datetime(end_date))
     plt.savefig(r'flask-app\frontend\static\images\user_progress.png')  # Save the plot as a .png file
     plt.close()
 
@@ -43,7 +47,7 @@ def generate_plots():
     plt.xticks(rotation=45)
     plt.grid(axis='y')
     plt.tight_layout()
-    plt.savefig('static/images/perseverance.png')
+    plt.savefig(r'flask-app\frontend\static\images\perseverance.png')
     plt.close()
 
     df_unique['success_rate'] = df_unique['correct_attempts'] / df_unique['attempts']
@@ -55,5 +59,6 @@ def generate_plots():
     plt.xticks(rotation=45)
     plt.grid(axis='y')
     plt.tight_layout()
-    plt.savefig('static/images/knowledge.png')
+    plt.savefig(r'flask-app\frontend\static\images\knowledge.png')
     plt.close()
+    print("Plots updated")
