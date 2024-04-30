@@ -7,6 +7,8 @@ from functions.detection_module import read_frame, load_yolov5_model, detect_obj
 import pyaudio
 import wave
 from google.cloud import speech
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 # Setup Google Cloud Speech client
 client = speech.SpeechClient()
