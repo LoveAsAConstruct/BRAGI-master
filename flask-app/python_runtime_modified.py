@@ -8,7 +8,7 @@ import pyaudio
 import wave
 from google.cloud import speech
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from frontend.generate_plots import generate_plots
 
 # Setup Google Cloud Speech client
 client = speech.SpeechClient()
@@ -163,8 +163,10 @@ app.secret_key = 'isaslowkeybadatthis'
 def home():
     return render_template('homepage.html')
 
+
 @app.route('/dashboard')
 def dashboard():
+    generate_plots()  # Call this function to update the plots every time the dashboard is requested
     return render_template('dashboard.html')
 
 def get_db_connection():
