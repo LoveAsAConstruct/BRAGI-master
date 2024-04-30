@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import cv2
 import torch
 import numpy as np
@@ -152,6 +152,15 @@ def log_interaction():
     print("Interaction logged successfully")
     return jsonify({'message': 'Interaction logged successfully'}), 200
 
+# FRONTEND SEPERATION
+
+@app.route('/')
+def home():
+    return render_template('homepage.html')
+
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
 if __name__ == '__main__':
     display_thread = Thread(target=update_display)
