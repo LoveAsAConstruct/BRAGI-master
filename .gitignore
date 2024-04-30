@@ -2,6 +2,7 @@
 yolov5n.pt
 yolov5x.pt
 env/
+bragi/
 lens_calibration_images/
 authentication/*
 authentication/*.*

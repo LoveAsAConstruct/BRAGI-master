@@ -11,4 +11,3 @@
 	<Login path="/login" />
 	<Register path="/register" />
   </Router>
-  
