@@ -14,26 +14,24 @@ def generate_plots():
     """
     df = pd.read_sql_query(query, conn)
     conn.close()
-
+    print(df['current_time'])
     df['current_time'] = pd.to_datetime(df['current_time'])
     df['cumulative_correct'] = df['correct'].cumsum()
 
-    # Plotting user progress over time
+    # Convert current_time to datetime
+    df['current_time'] = pd.to_datetime(df['current_time'])
+
+    # Print first few rows to verify correct timestamps
+    print(df.head())
+    print(df['current_time'])
+    # Plotting
     plt.figure(figsize=(10, 6))
-    plt.plot(df['current_time'], df['cumulative_correct'], marker='o', linestyle='-')
+    plt.plot(df['current_time'], df['cumulative_correct'], marker='o', linestyle='-', color='blue')
     plt.title('User Progress Over Time')
     plt.xlabel('Time')
     plt.ylabel('Cumulative Correct Answers')
     plt.grid(True)
-
-    # Set x-axis limits to fit the data
-    plt.xlim(df['current_time'].min(), df['current_time'].max())
-    start_date = '2024-04-27'  # Example start date
-    end_date = '2024-04-30'    # Example end date
-
-    plt.xlim(pd.to_datetime(start_date), pd.to_datetime(end_date))
-    plt.savefig(r'flask-app\frontend\static\images\user_progress.png')  # Save the plot as a .png file
-    plt.close()
+    plt.show()
 
     df['attempts'] = df.groupby('english_word')['english_word'].transform('count')
     df['correct_attempts'] = df.groupby('english_word')['correct'].transform('sum')
@@ -62,3 +60,4 @@ def generate_plots():
     plt.savefig(r'flask-app\frontend\static\images\knowledge.png')
     plt.close()
     print("Plots updated")
+generate_plots()
