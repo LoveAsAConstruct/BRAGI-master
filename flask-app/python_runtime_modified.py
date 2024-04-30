@@ -92,7 +92,7 @@ def handle_listen():
     
     print("Audio recorded")
     # Save the recorded audio to a WAV file
-    temp_audio_file = 'data\\temp_audio.wav'
+    temp_audio_file = r'flask-app\data\temp_audio.wav'
     wf = wave.open(temp_audio_file, 'wb')
     wf.setnchannels(num_channels)
     wf.setsampwidth(audio.get_sample_size(audio_format))
@@ -137,7 +137,7 @@ def log_interaction():
         return jsonify({'error': 'Missing data'}), 400
 
     try:
-        conn = sqlite3.connect('flask-app\data\data.db')
+        conn = sqlite3.connect(r'flask-app\data\data.db')
         cursor = conn.cursor()
         cursor.execute('''
             INSERT INTO Interactions (user_id, english_word, correct)
@@ -166,7 +166,10 @@ def home():
 
 @app.route('/dashboard')
 def dashboard():
-    generate_plots()  # Call this function to update the plots every time the dashboard is requested
+    if session.get('user_id') is not None:
+        generate_plots(session['user_id'])  # Call this function to update the plots every time the dashboard is requested
+    else:
+        generate_plots(None)
     return render_template('dashboard.html')
 
 def get_db_connection():

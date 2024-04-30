@@ -3,36 +3,45 @@ import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
 
-def generate_plots():
+def generate_plots(user = 1):
     print("Generating plots")
     conn = sqlite3.connect('flask-app\data\data.db')
-    query = """
-    SELECT id, user_id, english_word, current_time, correct
-    FROM Interactions
-    WHERE user_id = 1
-    ORDER BY current_time;
-    """
+    if user is not None:
+        query = f"""
+        SELECT id, user_id, english_word, time, correct
+        FROM Interactions
+        WHERE user_id = {user}
+        ORDER BY time;
+        """
+    else:
+        query = f"""
+        SELECT id, user_id, english_word, time, correct
+        FROM Interactions
+        ORDER BY time;
+        """
     df = pd.read_sql_query(query, conn)
     conn.close()
-    print(df['current_time'])
-    df['current_time'] = pd.to_datetime(df['current_time'])
+    print(df['time'])
+    df['time'] = pd.to_datetime(df['time'])
     df['cumulative_correct'] = df['correct'].cumsum()
 
-    # Convert current_time to datetime
-    df['current_time'] = pd.to_datetime(df['current_time'])
+    # Convert time to datetime
+    df['time'] = pd.to_datetime(df['time'])
 
     # Print first few rows to verify correct timestamps
     print(df.head())
-    print(df['current_time'])
+    print(df['time'])
     # Plotting
     plt.figure(figsize=(10, 6))
-    plt.plot(df['current_time'], df['cumulative_correct'], marker='o', linestyle='-', color='blue')
+    plt.plot(df['time'], df['cumulative_correct'], marker='o', linestyle='-', color='blue')
     plt.title('User Progress Over Time')
     plt.xlabel('Time')
     plt.ylabel('Cumulative Correct Answers')
     plt.grid(True)
-    plt.show()
-
+    plt.tight_layout()
+    plt.savefig(r'flask-app\frontend\static\images\user_progress.png'   )
+    plt.close()
+    
     df['attempts'] = df.groupby('english_word')['english_word'].transform('count')
     df['correct_attempts'] = df.groupby('english_word')['correct'].transform('sum')
     
