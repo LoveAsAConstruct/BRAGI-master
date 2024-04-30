@@ -1,12 +1,13 @@
 /* Color Variables */
 :root {
-    --primary-color: #0056b3;   /* Deep blue */
-    --secondary-color: #ffffff; /* White */
-    --accent-color: #4CAF50;    /* Green for success messages or highlights */
+    --primary-color: #5746EA;   /* Deep blue to violet gradient start */
+    --secondary-color: #5D26C1; /* Violet gradient end */
+    --accent-color: #FFD700;    /* Gold for highlights */
     --error-color: #f44336;     /* Red for error messages */
-    --background-color: #f8f9fa; /* Light gray background */
-    --text-color: #333333;      /* Dark gray text color */
-    --nav-text-color: #ffffff;  /* White text in navbar */
+    --background-color: #3B3B98; /* Deep blue background for sections */
+    --text-color: #FFFFFF;      /* White text color */
+    --nav-text-color: #FFFFFF;  /* White text in navbar */
+    --section-background: linear-gradient(to right, #5746EA, #5D26C1); /* Background gradient for sections */
 }
 
 /* Basic Reset */
@@ -21,18 +22,20 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
+    font-size: 16px;
 }
 
 /* Navigation */
 nav {
-    background-color: var(--primary-color);
+    background: var(--section-background);
     color: var(--nav-text-color);
-    text-align: center;
     padding: 10px 0;
+    text-align: center;
 }
 
 nav ul {
     list-style: none;
+    padding: 0;
 }
 
 nav ul li {
@@ -47,34 +50,45 @@ nav a {
     font-size: 1.2em;
 }
 
+/* Section Styling */
+.section {
+    background: var(--section-background);
+    padding: 50px 20px;
+    color: var(--text-color);
+    text-align: center;
+}
+
+/* Header Section */
+.header {
+    background: var(--section-background);
+    padding: 100px 20px;
+    text-align: center;
+}
+
 /* Content Styling */
 .content {
     padding: 20px;
     max-width: 1200px;
     margin: 20px auto;
     background-color: var(--secondary-color);
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    color: var(--text-color);
+    border-radius: 8px;
 }
 
+/* Typography and Links */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-color);
+    color: var(--text-color);
 }
 
-input[type="text"], input[type="password"], input[type="email"], select, textarea {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+a {
+    color: var(--accent-color);
+    text-decoration: none;
 }
 
+/* Buttons and Inputs */
 input[type="submit"], button {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
+    background-color: var(--accent-color);
+    color: var(--text-color);
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
@@ -83,17 +97,18 @@ input[type="submit"], button {
 }
 
 input[type="submit"]:hover, button:hover {
-    background-color: darken(var(--primary-color), 10%);
+    background-color: darken(var(--accent-color), 10%);
 }
 
-/* Error Messages */
-.error {
-    color: var(--error-color);
-    margin: 5px 0;
+/* Footer */
+footer {
+    background: var(--section-background);
+    color: var(--nav-text-color);
+    padding: 20px 0;
+    text-align: center;
 }
 
-/* Success Messages */
-.success {
-    color: var(--accent-color);
-    margin: 5px 0;
+/* Utility Classes */
+.text-center {
+    text-align: center;
 }
