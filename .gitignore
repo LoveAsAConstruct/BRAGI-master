@@ -7,3 +7,4 @@ authentication/*
 authentication/*.*
 authentication/*.json
 eco-signal-420813-b52a3632523a.json
+flask-app/frontend/static/images/*.png
