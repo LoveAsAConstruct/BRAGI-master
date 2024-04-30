@@ -1,83 +1,48 @@
+/* Import Montserrat font */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 /* Color Variables */
 :root {
-    --primary-color: #5746EA;   /* Deep blue to violet gradient start */
-    --secondary-color: #5D26C1; /* Violet gradient end */
-    --accent-color: #FFD700;    /* Gold for highlights */
+    --primary-color: #0056b3;   /* Deep blue */
+    --secondary-color: #ffffff; /* White */
+    --accent-color: #4CAF50;    /* Green for success messages or highlights */
     --error-color: #f44336;     /* Red for error messages */
-    --background-color: #3B3B98; /* Deep blue background for sections */
-    --text-color: #FFFFFF;      /* White text color */
-    --nav-text-color: #FFFFFF;  /* White text in navbar */
-    --section-background: linear-gradient(to right, #5746EA, #5D26C1); /* Background gradient for sections */
-}
-
-/* Basic Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    --background-color: #f8f9fa; /* Light gray background */
+    --text-color: #333333;      /* Dark gray text color */
+    --nav-bg-color: #212529;    /* Dark background for navbar */
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Montserrat font for the body */
     background-color: var(--background-color);
     color: var(--text-color);
     line-height: 1.6;
     font-size: 16px;
 }
 
-/* Navigation */
-nav {
-    background: var(--section-background);
-    color: var(--nav-text-color);
-    padding: 10px 0;
-    text-align: center;
+/* Bootstrap Navbar Customization */
+.navbar {
+    background-color: var(--nav-bg-color) !important; /* Ensuring the navbar background is correctly applied */
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav a {
-    color: var(--nav-text-color);
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2em;
-}
-
-/* Section Styling */
-.section {
-    background: var(--section-background);
-    padding: 50px 20px;
-    color: var(--text-color);
-    text-align: center;
-}
-
-/* Header Section */
-.header {
-    background: var(--section-background);
-    padding: 100px 20px;
-    text-align: center;
+.nav-link, .navbar-brand {
+    color: var(--secondary-color) !important; /* Ensures text color is white */
 }
 
 /* Content Styling */
 .content {
     padding: 20px;
-    max-width: 1200px;
-    margin: 20px auto;
+    margin-top: 20px; /* Added margin to separate content from navbar */
     background-color: var(--secondary-color);
-    color: var(--text-color);
     border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc; /* Subtle border for content boxes */
 }
 
 /* Typography and Links */
 h1, h2, h3, h4, h5, h6 {
-    color: var(--text-color);
+    color: var(--primary-color);
+    font-family: 'Montserrat', sans-serif; /* Montserrat font for headers */
 }
 
 a {
@@ -87,28 +52,28 @@ a {
 
 /* Buttons and Inputs */
 input[type="submit"], button {
-    background-color: var(--accent-color);
-    color: var(--text-color);
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 input[type="submit"]:hover, button:hover {
-    background-color: darken(var(--accent-color), 10%);
+    background-color: darken(var(--primary-color), 10%);
+    color: var(--text-color);
 }
 
-/* Footer */
-footer {
-    background: var(--section-background);
-    color: var(--nav-text-color);
-    padding: 20px 0;
-    text-align: center;
+/* Error Messages */
+.error {
+    color: var(--error-color);
+    margin: 5px 0;
 }
 
-/* Utility Classes */
-.text-center {
-    text-align: center;
+/* Success Messages */
+.success {
+    color: var(--accent-color);
+    margin: 5px 0;
 }
