@@ -3,7 +3,7 @@ import cv2
 import torch
 import numpy as np
 from threading import Thread, Lock
-from detection_module import read_frame, load_yolov5_model, detect_objects, apply_homography, format_detections
+from functions.detection_module import read_frame, load_yolov5_model, detect_objects, apply_homography, format_detections
 import pyaudio
 import wave
 from google.cloud import speech
@@ -14,7 +14,7 @@ app = Flask(__name__)
 
 # Load the model and homography matrix
 model = load_yolov5_model()
-H_matrix = np.load('homography_matrix.npy')
+H_matrix = np.load(r'flask-app\config\homography_matrix.npy')
 
 # Global frame for threading
 frame_global = None
@@ -88,7 +88,7 @@ def handle_listen():
     
     print("Audio recorded")
     # Save the recorded audio to a WAV file
-    temp_audio_file = 'temp_audio.wav'
+    temp_audio_file = 'data\\temp_audio.wav'
     wf = wave.open(temp_audio_file, 'wb')
     wf.setnchannels(num_channels)
     wf.setsampwidth(audio.get_sample_size(audio_format))
