@@ -4,6 +4,9 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using System;
+using System.Globalization;
+using System.Text;
+using System.Text.RegularExpressions;
 
 public class FlashcardInteractionManager : MonoBehaviour
 {
@@ -55,6 +58,7 @@ public class FlashcardInteractionManager : MonoBehaviour
                 else
                 {
                     //resultText.text = "Response: " + RemoveAccents(responseText.ToLower());
+                    Debug.Log("Raw response: " + responseText);
                     CheckResponse(responseText);
                 }
             }
@@ -63,15 +67,18 @@ public class FlashcardInteractionManager : MonoBehaviour
 
     void CheckResponse(string response)
     {
+        string decodedResponse = DecodeUnicodeEscapes(response);
+
         string currentWordToCheck = (flashcardInitializer != null && !string.IsNullOrEmpty(flashcardInitializer.wordData.spanishWord))
             ? flashcardInitializer.wordData.spanishWord
             : wordToCheck;
 
-        string normalizedResponse = RemoveAccents(response.ToLower());
+        string normalizedResponse = RemoveAccents(decodedResponse.ToLower());
         string normalizedWordToCheck = RemoveAccents(currentWordToCheck.ToLower());
+        print("checking  normalized " + normalizedWordToCheck.ToLower() + " in response " + normalizedResponse.ToLower());
         int threshold = 2;
 
-        if (IsCloseMatch(normalizedResponse, normalizedWordToCheck, threshold))
+        if (normalizedResponse.Contains(normalizedWordToCheck))
         {
             Debug.Log("Word found: " + normalizedWordToCheck + ", in " + normalizedResponse);
             onCorrectResponse.Invoke();
@@ -83,6 +90,14 @@ public class FlashcardInteractionManager : MonoBehaviour
             onIncorrectResponse.Invoke();
             StartCoroutine(SendLogToServer(userId, normalizedWordToCheck, false));
         }
+    }
+
+    public static string DecodeUnicodeEscapes(string input)
+    {
+        return Regex.Replace(input, @"\\u(?<Value>[a-fA-F0-9]{4})", m =>
+        {
+            return ((char)int.Parse(m.Groups["Value"].Value, System.Globalization.NumberStyles.HexNumber)).ToString();
+        });
     }
     int ComputeLevenshteinDistance(string s1, string s2)
     {
@@ -169,7 +184,18 @@ public class FlashcardInteractionManager : MonoBehaviour
 
     string RemoveAccents(string input)
     {
-        byte[] bytes = System.Text.Encoding.GetEncoding("Cyrillic").GetBytes(input);
-        return System.Text.Encoding.ASCII.GetString(bytes);
+        string normalizedString = input.Normalize(NormalizationForm.FormD);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (char c in normalizedString)
+        {
+            if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+            {
+                stringBuilder.Append(c);
+            }
+        }
+
+        return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
     }
+
 }

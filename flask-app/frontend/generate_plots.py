@@ -33,7 +33,7 @@ def generate_plots(user = 1):
     print(df['time'])
     # Plotting
     plt.figure(figsize=(10, 6))
-    plt.plot(df['time'], df['cumulative_correct'], marker='o', linestyle='-', color='blue')
+    plt.plot(df['time'], df['cumulative_correct'],linestyle='-', color='blue')
     plt.title('User Progress Over Time')
     plt.xlabel('Time')
     plt.ylabel('Cumulative Correct Answers')
