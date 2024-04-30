@@ -191,6 +191,7 @@ def login():
         return render_template('login.html', error='Invalid username or password')
     return render_template('login.html')
 
+
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if request.method == 'POST':
@@ -200,8 +201,11 @@ def register():
         conn = get_db_connection()
         conn.execute('INSERT INTO Users (username, password) VALUES (?, ?)', (username, hashed_password))
         conn.commit()
+        user = conn.execute('SELECT * FROM Users WHERE username = ?', (username,)).fetchone()
         conn.close()
-        return redirect(url_for('login'))
+        session['user_id'] = user['id']
+        return redirect(url_for('dashboard'))
+    
     return render_template('register.html')
 
 @app.route('/logout')

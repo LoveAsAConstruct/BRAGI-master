@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import pickle
 from functions.parameters import *
-def load_calibration_parameters(filename='flask-app\config\calibration_parameters.pkl'):
+def load_calibration_parameters(filename=r'flask-app/config/calibration_parameters.pkl'):
     """ Load the saved camera matrix and distortion coefficients. """
     with open(filename, 'rb') as f:
         calibration_data = pickle.load(f)
