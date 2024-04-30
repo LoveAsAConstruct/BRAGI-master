@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, redirect, url_for, session
 import cv2
 import torch
 import numpy as np
@@ -137,7 +137,7 @@ def log_interaction():
         return jsonify({'error': 'Missing data'}), 400
 
     try:
-        conn = sqlite3.connect('data.db')
+        conn = sqlite3.connect('flask-app\data\data.db')
         cursor = conn.cursor()
         cursor.execute('''
             INSERT INTO Interactions (user_id, english_word, correct)
@@ -168,7 +168,7 @@ def dashboard():
     return render_template('dashboard.html')
 
 def get_db_connection():
-    conn = sqlite3.connect('data/data.db')
+    conn = sqlite3.connect('flask-app\data\data.db')
     conn.row_factory = sqlite3.Row
     return conn
 
