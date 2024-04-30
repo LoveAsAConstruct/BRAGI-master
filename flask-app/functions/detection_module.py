@@ -3,7 +3,7 @@
 import torch
 import cv2
 import numpy as np
-from lens_correction_stream import *
+from functions.lens_correction_stream import *
 camera_matrix, dist_coeffs = load_calibration_parameters()
 cap = cv2.VideoCapture(SOURCE)
 
@@ -26,7 +26,7 @@ def load_yolov5_model(weights_path: str = 'yolov5x.pt', device='cuda' if torch.c
     model.eval()
     return model
 
-def load_homography_matrix(matrix_path: str = 'homography_matrix.npy'):
+def load_homography_matrix(matrix_path: str = r'flask-app\config\homography_matrix.npy'):
     H = np.load(matrix_path)
     return H
 

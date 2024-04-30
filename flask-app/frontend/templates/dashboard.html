@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="content">
+    <h1>Dashboard</h1>
+    <p>Here is your progress displayed graphically:</p>
+    <img src="{{ url_for('static', filename='images/user_progress.png') }}" alt="User Progress">
+    <img src="{{ url_for('static', filename='images/perseverance.png') }}" alt="Perseverance">
+    <img src="{{ url_for('static', filename='images/knowledge.png') }}" alt="Knowledge">
+</div>
+{% endblock %}

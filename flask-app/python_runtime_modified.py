@@ -1,20 +1,24 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template, redirect, url_for, session
 import cv2
 import torch
 import numpy as np
 from threading import Thread, Lock
-from detection_module import read_frame, load_yolov5_model, detect_objects, apply_homography, format_detections
+from functions.detection_module import read_frame, load_yolov5_model, detect_objects, apply_homography, format_detections
 import pyaudio
 import wave
 from google.cloud import speech
+from werkzeug.security import generate_password_hash, check_password_hash
+from frontend.generate_plots import generate_plots
 
 # Setup Google Cloud Speech client
 client = speech.SpeechClient()
-app = Flask(__name__)
+app = Flask(__name__,
+            static_folder='frontend/static',
+            template_folder='frontend/templates')
 
 # Load the model and homography matrix
 model = load_yolov5_model()
-H_matrix = np.load('homography_matrix.npy')
+H_matrix = np.load(r'flask-app\config\homography_matrix.npy')
 
 # Global frame for threading
 frame_global = None
@@ -88,7 +92,7 @@ def handle_listen():
     
     print("Audio recorded")
     # Save the recorded audio to a WAV file
-    temp_audio_file = 'temp_audio.wav'
+    temp_audio_file = r'flask-app\data\temp_audio.wav'
     wf = wave.open(temp_audio_file, 'wb')
     wf.setnchannels(num_channels)
     wf.setsampwidth(audio.get_sample_size(audio_format))
@@ -133,7 +137,7 @@ def log_interaction():
         return jsonify({'error': 'Missing data'}), 400
 
     try:
-        conn = sqlite3.connect('data.db')
+        conn = sqlite3.connect(r'flask-app\data\data.db')
         cursor = conn.cursor()
         cursor.execute('''
             INSERT INTO Interactions (user_id, english_word, correct)
@@ -152,6 +156,58 @@ def log_interaction():
     print("Interaction logged successfully")
     return jsonify({'message': 'Interaction logged successfully'}), 200
 
+# FRONTEND SEPERATION
+app.secret_key = 'isaslowkeybadatthis'
+
+@app.route('/')
+def home():
+    return render_template('homepage.html')
+
+
+@app.route('/dashboard')
+def dashboard():
+    if session.get('user_id') is not None:
+        generate_plots(session['user_id'])  # Call this function to update the plots every time the dashboard is requested
+    else:
+        generate_plots(None)
+    return render_template('dashboard.html')
+
+def get_db_connection():
+    conn = sqlite3.connect('flask-app\data\data.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        conn = get_db_connection()
+        user = conn.execute('SELECT * FROM Users WHERE username = ?', (username,)).fetchone()
+        conn.close()
+        if user is not None and check_password_hash(user['password'], password):
+            session['user_id'] = user['id']
+            return redirect(url_for('dashboard'))
+        return render_template('login.html', error='Invalid username or password')
+    return render_template('login.html')
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        hashed_password = generate_password_hash(password)
+        conn = get_db_connection()
+        conn.execute('INSERT INTO Users (username, password) VALUES (?, ?)', (username, hashed_password))
+        conn.commit()
+        conn.close()
+        return redirect(url_for('login'))
+    return render_template('register.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('user_id', None)
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
     display_thread = Thread(target=update_display)
