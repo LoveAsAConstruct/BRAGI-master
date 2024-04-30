@@ -213,6 +213,17 @@ def logout():
     session.pop('user_id', None)
     return redirect(url_for('login'))
 
+@app.route('/user/<username>', methods=['GET'])
+def get_user_id(username):
+    conn = get_db_connection()
+    user = conn.execute('SELECT id FROM Users WHERE username = ?', (username,)).fetchone()
+    conn.close()
+    
+    if user:
+        return jsonify({'user_id': user['id']})
+    else:
+        return jsonify({'error': 'User not found'}), 404
+
 if __name__ == '__main__':
     display_thread = Thread(target=update_display)
     display_thread.start()
