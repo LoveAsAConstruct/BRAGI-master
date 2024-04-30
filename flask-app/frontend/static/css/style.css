@@ -1,13 +1,99 @@
-nav ul {
-    list-style-type: none;
+/* Color Variables */
+:root {
+    --primary-color: #0056b3;   /* Deep blue */
+    --secondary-color: #ffffff; /* White */
+    --accent-color: #4CAF50;    /* Green for success messages or highlights */
+    --error-color: #f44336;     /* Red for error messages */
+    --background-color: #f8f9fa; /* Light gray background */
+    --text-color: #333333;      /* Dark gray text color */
+    --nav-text-color: #ffffff;  /* White text in navbar */
+}
+
+/* Basic Reset */
+* {
+    margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Navigation */
+nav {
+    background-color: var(--primary-color);
+    color: var(--nav-text-color);
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
 }
 
 nav ul li {
     display: inline;
-    margin-right: 10px;
+    margin-right: 20px;
 }
 
+nav a {
+    color: var(--nav-text-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+/* Content Styling */
 .content {
-    margin-top: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: var(--secondary-color);
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+}
+
+input[type="text"], input[type="password"], input[type="email"], select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"], button {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: darken(var(--primary-color), 10%);
+}
+
+/* Error Messages */
+.error {
+    color: var(--error-color);
+    margin: 5px 0;
+}
+
+/* Success Messages */
+.success {
+    color: var(--accent-color);
+    margin: 5px 0;
 }
