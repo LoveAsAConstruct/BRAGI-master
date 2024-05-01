@@ -184,7 +184,7 @@ def dashboard():
     return render_template('dashboard.html')
 
 def get_db_connection():
-    conn = sqlite3.connect('flask-app\data\data.db')
+    conn = sqlite3.connect(r'flask-app\data\data.db')
     conn.row_factory = sqlite3.Row
     return conn
 
