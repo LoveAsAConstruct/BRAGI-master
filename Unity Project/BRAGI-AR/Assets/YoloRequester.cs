@@ -4,10 +4,12 @@ using UnityEngine.Networking;
 using TMPro;
 using System.Collections.Generic;
 using Oculus;
+using UnityEditor.Experimental.GraphView;
 
 public class YoloRequester : MonoBehaviour
 {
     public GameObject objectPrefab; // Assign your text prefab in the inspector
+    public GameObject quizPrefab;
     public Camera active_camera;
     private string url = "http://127.0.0.1:5000/detect";
     private bool isRequestInProgress = false;
@@ -16,7 +18,7 @@ public class YoloRequester : MonoBehaviour
     void Update()
     {
         // Check if the right trigger is pressed and no request is currently in progress
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, OVRInput.Controller.RTouch) && !isRequestInProgress)
+        if (OVRInput.GetDown(OVRInput.Button.One, OVRInput.Controller.RTouch) && !isRequestInProgress)
         {
             StartCoroutine(SendRequestToServer());
         }
@@ -65,8 +67,10 @@ public class YoloRequester : MonoBehaviour
                         // If nothing is hit, use the default depth
                         worldPosition = active_camera.ScreenToWorldPoint(new Vector3(scaledX1, scaledY1, active_camera.nearClipPlane + depth));
                     }
-
-                    var objectInstance = Instantiate(objectPrefab, worldPosition, Quaternion.identity);
+                    GameObject finalobj = objectPrefab;
+                    if (Random.value > 0.5f)
+                        finalobj = quizPrefab;
+                    var objectInstance = Instantiate(finalobj, worldPosition, Quaternion.identity);
                     objectInstance.transform.forward = active_camera.transform.forward;
                     var flashcardManager = objectInstance.GetComponent<FlashcardInitializer>();
                     flashcardManager.SetFlashcard($"{item.objectName}");

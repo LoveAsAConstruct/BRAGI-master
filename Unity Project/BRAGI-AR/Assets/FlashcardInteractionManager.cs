@@ -21,6 +21,8 @@ public class FlashcardInteractionManager : MonoBehaviour
     public UnityEvent onIncorrectResponse;  // Event triggered when the response is incorrect
     public int userId; // User ID to send with the log
 
+    public enum interactionType { flashcard, quiz};
+    public interactionType interaction = interactionType.flashcard;
     void Start()
     {
         listenButton.onClick.AddListener(OnListenButtonPressed);
@@ -140,7 +142,7 @@ public class FlashcardInteractionManager : MonoBehaviour
     }
     IEnumerator SendLogToServer(int userId, string word, bool isCorrect)
     {
-        LogData requestData = new LogData(userId, word, isCorrect);
+        LogData requestData = new LogData(userId, word, isCorrect, ((int)interaction));
         string jsonData = JsonUtility.ToJson(requestData);
         Debug.Log("Request data: " + jsonData);  // This should now correctly display the JSON structure.
 
@@ -172,12 +174,13 @@ public class FlashcardInteractionManager : MonoBehaviour
         public int userid;
         public string word;
         public bool correct;
-
-        public LogData(int userId, string word, bool isCorrect)
+        public int interactionType;
+        public LogData(int userId, string word, bool isCorrect, int interactionType)
         {
             this.userid = userId;
             this.word = word;
             this.correct = isCorrect;
+            this.interactionType = interactionType;
         }
     }
 

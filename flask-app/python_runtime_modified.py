@@ -131,18 +131,19 @@ def log_interaction():
     user_id = data.get('userid')
     english_word = data.get('word')
     correct = data.get('correct')
+    interaction = data.get('interactionType')
 
     if user_id is None or english_word is None or correct is None:
-        print(f"Error: Missing data - User ID: {user_id}, Word: {english_word}, Correct: {correct}")
+        print(f"Error: Missing data - User ID: {user_id}, Word: {english_word}, Correct: {correct}, Interaction: {interaction}")
         return jsonify({'error': 'Missing data'}), 400
 
     try:
         conn = sqlite3.connect(r'flask-app\data\data.db')
         cursor = conn.cursor()
         cursor.execute('''
-            INSERT INTO Interactions (user_id, english_word, correct)
-            VALUES (?, ?, ?)
-        ''', (user_id, english_word, correct))
+            INSERT INTO Interactions (user_id, english_word, correct, type)
+            VALUES (?, ?, ?, ?)
+        ''', (user_id, english_word, correct, interaction))
         conn.commit()
     except sqlite3.Error as e:
         conn.rollback()
