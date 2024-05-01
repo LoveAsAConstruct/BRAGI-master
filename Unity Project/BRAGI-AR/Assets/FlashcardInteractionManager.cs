@@ -26,6 +26,10 @@ public class FlashcardInteractionManager : MonoBehaviour
     void Start()
     {
         listenButton.onClick.AddListener(OnListenButtonPressed);
+        if(GameObject.FindObjectOfType<UserManager>() != null)
+        {
+            userId = GameObject.FindObjectOfType<UserManager>().UserID;
+        }
     }
 
     void OnListenButtonPressed()
