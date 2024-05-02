@@ -1,72 +1,112 @@
-# This function should be in a separate file, such as your_plot_script.py
 import sqlite3
 import pandas as pd
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MaxNLocator
 
-def generate_plots(user = 1):
-    print("Generating plots")
-    conn = sqlite3.connect('flask-app\data\data.db')
+def fetch_data(user=None):
+    conn = sqlite3.connect('flask-app/data/data.db')
+    query = """
+    SELECT id, user_id, english_word, time, correct, type
+    FROM Interactions
+    """
     if user is not None:
-        query = f"""
-        SELECT id, user_id, english_word, time, correct
-        FROM Interactions
-        WHERE user_id = {user}
-        ORDER BY time;
-        """
-    else:
-        query = f"""
-        SELECT id, user_id, english_word, time, correct
-        FROM Interactions
-        ORDER BY time;
-        """
+        query += f"WHERE user_id = {user} "
+    query += "ORDER BY time;"
     df = pd.read_sql_query(query, conn)
     conn.close()
-    print(df['time'])
+    return df
+
+def process_data(df):
     df['time'] = pd.to_datetime(df['time'])
-    df['cumulative_correct'] = df['correct'].cumsum()
+    df['hour'] = df['time'].dt.floor('H')
+    df['day'] = df['time'].dt.date
+    return df
 
-    # Convert time to datetime
-    df['time'] = pd.to_datetime(df['time'])
-
-    # Print first few rows to verify correct timestamps
-    print(df.head())
-    print(df['time'])
-    # Plotting
-    plt.figure(figsize=(10, 6))
-    plt.plot(df['time'], df['cumulative_correct'],linestyle='-', color='blue')
-    plt.title('User Progress Over Time')
-    plt.xlabel('Time')
-    plt.ylabel('Cumulative Correct Answers')
-    plt.grid(True)
+def plot_correct_answers_by_type(df):
+    df_correct_type = df[df['correct'] == 1].groupby(['time', 'type']).size().unstack().rename(columns={0: 'Flashcard', 1: 'Quiz'}).fillna(0)
+    df_correct_type.plot(kind='area', stacked=False, alpha=0.5)
+    plt.title('Your Correct Answers by Type Over Time')
+    plt.xlabel('Date')
+    plt.ylabel('Number of Correct Answers')
     plt.tight_layout()
-    plt.savefig(r'flask-app\frontend\static\images\user_progress.png'   )
+    plt.savefig(r'flask-app/frontend/static/images/your_correct_by_type.png')
     plt.close()
-    
-    df['attempts'] = df.groupby('english_word')['english_word'].transform('count')
-    df['correct_attempts'] = df.groupby('english_word')['correct'].transform('sum')
-    
-    plt.figure(figsize=(10, 6))
-    df_unique = df.drop_duplicates(subset='english_word')
-    plt.bar(df_unique['english_word'], df_unique['attempts'], color='skyblue')
-    plt.title('Perseverance: Attempts per Word')
+
+def plot_perseverance_over_time(df):
+    df_word_attempts = df.groupby([df['hour'], 'english_word']).size().unstack().fillna(0)
+    df_word_attempts.plot(kind='line', marker='o', linestyle='-')
+    plt.title('Your Perseverance Over Time')
+    plt.xlabel('Hour')
+    plt.ylabel('Number of Attempts per Word')
+    plt.legend(title='Words', loc='upper left', bbox_to_anchor=(1, 1))
+    plt.tight_layout()
+    plt.savefig(r'flask-app/frontend/static/images/your_perseverance_over_time.png')
+    plt.close()
+
+def plot_perseverance_by_word(df):
+    df_attempts_per_word = df.groupby('english_word').size()
+    df_attempts_per_word.plot(kind='bar', color='skyblue')
+    plt.title('Your Perseverance by Word')
     plt.xlabel('Words')
-    plt.ylabel('Number of Attempts')
+    plt.ylabel('Total Attempts')
     plt.xticks(rotation=45)
-    plt.grid(axis='y')
     plt.tight_layout()
-    plt.savefig(r'flask-app\frontend\static\images\perseverance.png')
+    plt.savefig(r'flask-app/frontend/static/images/your_perseverance_by_word.png')
     plt.close()
 
-    df_unique['success_rate'] = df_unique['correct_attempts'] / df_unique['attempts']
-    plt.figure(figsize=(10, 6))
-    plt.bar(df_unique['english_word'], df_unique['success_rate'], color='green')
-    plt.title('Knowledge: Success Rate per Word')
-    plt.xlabel('Words')
-    plt.ylabel('Success Rate')
+def plot_interactions_by_type(df):
+    df_type_time = df.groupby([df['time'].dt.floor('D'), 'type']).size().unstack().fillna(0)
+    df_type_time.plot(kind='bar', stacked=True)
+    plt.title('Your Interaction Types Over Time')
+    plt.xlabel('Date')
+    plt.ylabel('Number of Interactions')
     plt.xticks(rotation=45)
-    plt.grid(axis='y')
     plt.tight_layout()
-    plt.savefig(r'flask-app\frontend\static\images\knowledge.png')
+    plt.savefig(r'flask-app/frontend/static/images/your_interactions_by_type.png')
     plt.close()
+
+def plot_correct_answers_by_type(df):
+    df_correct_type = df[df['correct'] == 1].groupby(['time', 'type']).size().unstack().fillna(0)
+    df_correct_type.plot(kind='area', stacked=False, alpha=0.5)
+    plt.title('Your Correct Answers by Type Over Time')
+    plt.xlabel('Date')
+    plt.ylabel('Number of Correct Answers')
+    plt.tight_layout()
+    plt.savefig(r'flask-app/frontend/static/images/your_correct_by_type.png')
+    plt.close()
+
+def plot_user_activity_by_day(df):
+    df_day = df.groupby('day').size()
+    df_day.plot(kind='line', marker='o', linestyle='-')
+    plt.title('Your Activity by Day')
+    plt.xlabel('Day')
+    plt.ylabel('Number of Interactions')
+    plt.gca().xaxis.set_major_locator(MaxNLocator(nbins=6))  # Adjust to the number of different days
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    plt.savefig(r'flask-app/frontend/static/images/your_activity_by_day.png')
+    plt.close()
+
+def plot_correct_ratio_per_word(df):
+    df_word_correct = df.groupby('english_word')['correct'].mean()
+    df_word_correct.sort_values().plot(kind='barh', color='green')
+    plt.title('Your Correct Answer Ratio per Word')
+    plt.xlabel('Ratio of Correct Answers')
+    plt.tight_layout()
+    plt.savefig(r'flask-app/frontend/static/images/your_correct_ratio_word.png')
+    plt.close()
+
+def generate_plots(user=None):
+    print("Generating personal plots")
+    df = fetch_data(user)
+    df = process_data(df)
+    plot_interactions_by_type(df)
+    plot_correct_answers_by_type(df)
+    plot_user_activity_by_day(df)
+    plot_correct_ratio_per_word(df)
+    plot_perseverance_over_time(df)
+    plot_perseverance_by_word(df)
     print("Plots updated")
-generate_plots()
+
+if __name__ == '__main__':
+    generate_plots()  # Optionally add user=USER_ID
