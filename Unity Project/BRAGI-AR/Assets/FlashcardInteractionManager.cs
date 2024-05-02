@@ -146,7 +146,10 @@ public class FlashcardInteractionManager : MonoBehaviour
     }
     IEnumerator SendLogToServer(int userId, string word, bool isCorrect)
     {
-        LogData requestData = new LogData(userId, word, isCorrect, ((int)interaction));
+        int interactionint = 0;
+        if(interaction==interactionType.quiz)
+                interactionint = 1;
+        LogData requestData = new LogData(userId, word, isCorrect, interactionint);
         string jsonData = JsonUtility.ToJson(requestData);
         Debug.Log("Request data: " + jsonData);  // This should now correctly display the JSON structure.
 
