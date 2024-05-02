@@ -37,6 +37,15 @@
 </style>
 <div class="content">
     <h1>Dashboard</h1>
+    <form action="{{ url_for('dashboard') }}" method="post">
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date">
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date">
+        <label for="word_type">Word:</label>
+        <input type="text" id="word_type" name="word_type" placeholder="e.g., persona, teclado">
+        <button type="submit">Update Dashboard</button>
+    </form>
     <p>Here is your progress displayed graphically:</p>
     <div class="pie-charts">
         <div class="chart-container" data-description="Shows the proportion of Flashcards vs. Quizzes you engage with.">

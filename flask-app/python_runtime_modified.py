@@ -131,20 +131,29 @@ def log_interaction():
     user_id = data.get('userid')
     english_word = data.get('word')
     correct = data.get('correct')
-    interaction = data.get('interactionType')
+    interaction_type = data.get('interactionType')
 
-    if user_id is None or english_word is None or correct is None:
-        print(f"Error: Missing data - User ID: {user_id}, Word: {english_word}, Correct: {correct}, Interaction: {interaction}")
+    if user_id is None or english_word is None or correct is None or interaction_type is None:
+        print(f"Error: Missing data - User ID: {user_id}, Word: {english_word}, Correct: {correct}, Interaction: {interaction_type}")
         return jsonify({'error': 'Missing data'}), 400
-
+    
     try:
+        interaction_type = int(interaction_type)  # Convert to integer
         conn = sqlite3.connect(r'flask-app\data\data.db')
         cursor = conn.cursor()
         cursor.execute('''
             INSERT INTO Interactions (user_id, english_word, correct, type)
             VALUES (?, ?, ?, ?)
-        ''', (user_id, english_word, correct, interaction))
+        ''', (user_id, english_word, correct, interaction_type))
+        print(cursor)
+        print('''
+            INSERT INTO Interactions (user_id, english_word, correct, type)
+            VALUES (?, ?, ?, ?)
+        ''', (user_id, english_word, correct, interaction_type))
         conn.commit()
+    except ValueError:
+        print("Conversion Error: Interaction type is not an integer")
+        return jsonify({'error': 'Interaction type must be an integer'}), 400
     except sqlite3.Error as e:
         conn.rollback()
         conn.close()
@@ -153,6 +162,9 @@ def log_interaction():
     finally:
         if conn:
             conn.close()
+        print(f"Logging - User ID: {user_id}, Word: {english_word}, Correct: {correct}, Interaction: {interaction_type}")
+        return jsonify({'message': 'Log saved successfully'}), 200
+
 
     print("Interaction logged successfully")
     return jsonify({'message': 'Interaction logged successfully'}), 200
@@ -176,18 +188,15 @@ def home():
     return render_template('homepage.html')
 
 
-@app.route('/dashboard')
+@app.route('/dashboard', methods=['GET', 'POST'])
 def dashboard():
-    if session.get('user_id') is not None:
-        generate_plots(session['user_id'])  # Call this function to update the plots every time the dashboard is requested
-    else:
-        generate_plots(None)
-    return render_template('dashboard.html')
+    user_id = session.get('user_id')
+    start_date = request.form.get('start_date') if request.method == 'POST' else None
+    end_date = request.form.get('end_date') if request.method == 'POST' else None
+    word_type = request.form.get('word_type') if request.method == 'POST' else None
 
-def get_db_connection():
-    conn = sqlite3.connect(r'flask-app\data\data.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+    generate_plots(user_id, start_date, end_date, word_type)
+    return render_template('dashboard.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -225,6 +234,11 @@ def register():
 def logout():
     session.pop('user_id', None)
     return redirect(url_for('login'))
+
+def get_db_connection():
+    conn = sqlite3.connect(r'flask-app\data\data.db')
+    conn.row_factory = sqlite3.Row
+    return conn
 
 if __name__ == '__main__':
     display_thread = Thread(target=update_display)
