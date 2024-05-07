@@ -31,6 +31,27 @@ def process_data(df):
     df['day'] = df['time'].dt.date
     return df
 
+def plot_overall_accuracy(df):
+    accuracy_counts = df['correct'].value_counts()
+    labels = ['Correct', 'Incorrect'] if 0 in accuracy_counts and 1 in accuracy_counts else ['Correct'] if 1 in accuracy_counts else ['Incorrect']
+    colors = ['#66b3ff', '#ff9999']
+    plt.figure(figsize=(8, 8))
+    accuracy_counts.plot(kind='pie', labels=labels, autopct='%1.1f%%', startangle=90, colors=colors)
+    plt.title('Overall Accuracy')
+    plt.ylabel('')
+    plt.tight_layout()
+    plt.savefig(r'flask-app/frontend/static/images/overall_accuracy.png')
+    plt.close()
+def plot_quiz_test_ratio(df):
+    interaction_types = df[df['type'].isin([1, 0])]['type'].value_counts()
+    plt.figure(figsize=(8, 8))
+    interaction_types.plot(kind='pie', autopct='%1.1f%%', startangle=90, colors=['#ffcc99', '#99ff99'])
+    plt.title('Ratio of Quiz to Test Interactions')
+    plt.ylabel('')
+    plt.tight_layout()
+    plt.savefig(r'flask-app/frontend/static/images/quiz_test_ratio.png')
+    plt.close()
+
 def plot_correct_answers_by_type(df):
     df_correct_type = df[df['correct'] == 1].groupby(['time', 'type']).size().unstack().rename(columns={0: 'Flashcard', 1: 'Quiz'}).fillna(0)
     df_correct_type.plot(kind='area', stacked=False, alpha=0.5)
@@ -42,15 +63,25 @@ def plot_correct_answers_by_type(df):
     plt.close()
 
 def plot_perseverance_over_time(df):
-    df_word_attempts = df.groupby([df['hour'], 'english_word']).size().unstack().fillna(0)
-    df_word_attempts.plot(kind='line', marker='o', linestyle='-')
+    df['time'] = pd.to_datetime(df['time'])
+    df['hour'] = df['time'].dt.floor('H')  # Make sure 'hour' is already set, if not, uncomment this line
+    df_word_attempts = df.groupby(['hour', 'english_word']).size().reset_index(name='attempts')
+    
+    # Resample the data to a less granular time frame if hourly data is too noisy
+    df_word_attempts['hour'] = pd.to_datetime(df_word_attempts['hour'])
+    df_resampled = df_word_attempts.set_index('hour').groupby('english_word').resample('4H').sum().fillna(0).reset_index()
+
+    # Plotting
+    pivot_df = df_resampled.pivot(index='hour', columns='english_word', values='attempts')
+    pivot_df.plot(kind='line', marker='o', linestyle='-')
     plt.title('Your Perseverance Over Time')
-    plt.xlabel('Hour')
+    plt.xlabel('Time')
     plt.ylabel('Number of Attempts per Word')
     plt.legend(title='Words', loc='upper left', bbox_to_anchor=(1, 1))
     plt.tight_layout()
     plt.savefig(r'flask-app/frontend/static/images/your_perseverance_over_time.png')
     plt.close()
+
 
 def plot_perseverance_by_word(df):
     df_attempts_per_word = df.groupby('english_word').size()
@@ -127,7 +158,11 @@ def generate_plots(user=None, start_date=None, end_date=None, word=None):
         generate_placeholder_image(r'flask-app/frontend/static/images/your_interactions_by_type.png')
         generate_placeholder_image(r'flask-app/frontend/static/images/your_activity_by_day.png')
         generate_placeholder_image(r'flask-app/frontend/static/images/your_correct_ratio_word.png')
+        generate_placeholder_image(r'flask-app/frontend/static/images/overall_accuracy.png')
+        generate_placeholder_image(r'flask-app/frontend/static/images/quiz_test_ratio.png')
     else:
+        plot_overall_accuracy(df)
+        plot_quiz_test_ratio(df)
         plot_interactions_by_type(df)
         plot_correct_answers_by_type(df)
         plot_user_activity_by_day(df)

@@ -1,0 +1,218 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Extensions\\MonoBehaviourStartExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Extensions\\MonoBehaviourStartExtensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F4A5048-6A3F-F870-3735-C2E8298E5C61}|Assembly-CSharp.csproj|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\assets\\ovrpointer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F4A5048-6A3F-F870-3735-C2E8298E5C61}|Assembly-CSharp.csproj|solutionrelative:assets\\ovrpointer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Interaction\\Models\\Ray\\RayInteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Interaction\\Models\\Ray\\RayInteractor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Library\\PackageCache\\com.meta.xr.sdk.core@60.0.0\\Scripts\\Util\\OVRRaycaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Library\\PackageCache\\com.meta.xr.sdk.core@60.0.0\\Scripts\\Util\\OVRRaycaster.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F4A5048-6A3F-F870-3735-C2E8298E5C61}|Assembly-CSharp.csproj|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\assets\\pointer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F4A5048-6A3F-F870-3735-C2E8298E5C61}|Assembly-CSharp.csproj|solutionrelative:assets\\pointer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F4A5048-6A3F-F870-3735-C2E8298E5C61}|Assembly-CSharp.csproj|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\assets\\randomizechessboardposition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F4A5048-6A3F-F870-3735-C2E8298E5C61}|Assembly-CSharp.csproj|solutionrelative:assets\\randomizechessboardposition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B5916E1B-57A0-BA1A-000D-F30C6089F5C3}|Assembly-CSharp-Editor.csproj|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\assets\\editor\\createworddataassets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B5916E1B-57A0-BA1A-000D-F30C6089F5C3}|Assembly-CSharp-Editor.csproj|solutionrelative:assets\\editor\\createworddataassets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{99D1965C-2B8A-0287-EF89-0CE005534585}|com.samples.utils.csproj|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\assets\\phanto\\utils\\debug\\debugsceneentities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99D1965C-2B8A-0287-EF89-0CE005534585}|com.samples.utils.csproj|solutionrelative:assets\\phanto\\utils\\debug\\debugsceneentities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Scripts\\CreateWordDataAssets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\Scripts\\CreateWordDataAssets.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F4A5048-6A3F-F870-3735-C2E8298E5C61}|Assembly-CSharp.csproj|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\assets\\worddefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F4A5048-6A3F-F870-3735-C2E8298E5C61}|Assembly-CSharp.csproj|solutionrelative:assets\\worddefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0F4A5048-6A3F-F870-3735-C2E8298E5C61}|Assembly-CSharp.csproj|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\assets\\yolorequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0F4A5048-6A3F-F870-3735-C2E8298E5C61}|Assembly-CSharp.csproj|solutionrelative:assets\\yolorequester.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\FlashcardScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Assets\\FlashcardScript.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RayInteractor.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Interaction\\Models\\Ray\\RayInteractor.cs",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Interaction\\Models\\Ray\\RayInteractor.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Interaction\\Models\\Ray\\RayInteractor.cs",
+              "RelativeToolTip": "Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Interaction\\Models\\Ray\\RayInteractor.cs",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T14:50:34.021Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "OVRRaycaster.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Library\\PackageCache\\com.meta.xr.sdk.core@60.0.0\\Scripts\\Util\\OVRRaycaster.cs",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.meta.xr.sdk.core@60.0.0\\Scripts\\Util\\OVRRaycaster.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Library\\PackageCache\\com.meta.xr.sdk.core@60.0.0\\Scripts\\Util\\OVRRaycaster.cs",
+              "RelativeToolTip": "Library\\PackageCache\\com.meta.xr.sdk.core@60.0.0\\Scripts\\Util\\OVRRaycaster.cs",
+              "ViewState": "AQIAACkAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T14:46:23.259Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MonoBehaviourStartExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Extensions\\MonoBehaviourStartExtensions.cs",
+              "RelativeDocumentMoniker": "Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Extensions\\MonoBehaviourStartExtensions.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Extensions\\MonoBehaviourStartExtensions.cs",
+              "RelativeToolTip": "Library\\PackageCache\\com.meta.xr.sdk.interaction@60.0.0\\Runtime\\Scripts\\Extensions\\MonoBehaviourStartExtensions.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAcwDgAAAAtAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T14:09:50.622Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "OVRPointer.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\OVRPointer.cs",
+              "RelativeDocumentMoniker": "Assets\\OVRPointer.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\OVRPointer.cs",
+              "RelativeToolTip": "Assets\\OVRPointer.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-24T14:04:55.728Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RandomizeChessboardPosition.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\RandomizeChessboardPosition.cs",
+              "RelativeDocumentMoniker": "Assets\\RandomizeChessboardPosition.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\RandomizeChessboardPosition.cs",
+              "RelativeToolTip": "Assets\\RandomizeChessboardPosition.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T17:17:43.794Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Pointer.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Pointer.cs",
+              "RelativeDocumentMoniker": "Assets\\Pointer.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Pointer.cs",
+              "RelativeToolTip": "Assets\\Pointer.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAUwDAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T17:16:23.32Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CreateWordDataAssets.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Editor\\CreateWordDataAssets.cs",
+              "RelativeDocumentMoniker": "Assets\\Editor\\CreateWordDataAssets.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Editor\\CreateWordDataAssets.cs",
+              "RelativeToolTip": "Assets\\Editor\\CreateWordDataAssets.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAxAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T13:12:31.098Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreateWordDataAssets.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Scripts\\CreateWordDataAssets.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CreateWordDataAssets.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Scripts\\CreateWordDataAssets.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CreateWordDataAssets.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-19T14:53:49.579Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "WordDefinition.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\WordDefinition.cs",
+              "RelativeDocumentMoniker": "Assets\\WordDefinition.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\WordDefinition.cs",
+              "RelativeToolTip": "Assets\\WordDefinition.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAB0AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T17:47:14.226Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DebugSceneEntities.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Phanto\\Utils\\Debug\\DebugSceneEntities.cs",
+              "RelativeDocumentMoniker": "Assets\\Phanto\\Utils\\Debug\\DebugSceneEntities.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\Phanto\\Utils\\Debug\\DebugSceneEntities.cs",
+              "RelativeToolTip": "Assets\\Phanto\\Utils\\Debug\\DebugSceneEntities.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-18T13:28:34.716Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FlashcardScript.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\FlashcardScript.cs",
+              "RelativeDocumentMoniker": "Assets\\FlashcardScript.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\FlashcardScript.cs",
+              "RelativeToolTip": "Assets\\FlashcardScript.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-09T17:03:47.955Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "YoloRequester.cs",
+              "DocumentMoniker": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\YoloRequester.cs",
+              "RelativeDocumentMoniker": "Assets\\YoloRequester.cs",
+              "ToolTip": "C:\\Users\\NuVu\\Downloads\\BRAGI-master\\BRAGI-master\\Unity Project\\Unity-Phanto-main\\Assets\\YoloRequester.cs",
+              "RelativeToolTip": "Assets\\YoloRequester.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAAwFgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-01T13:19:25.602Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -48,13 +48,14 @@
     </form>
     <p>Here is your progress displayed graphically:</p>
     <div class="pie-charts">
-        <div class="chart-container" data-description="Shows the proportion of Flashcards vs. Quizzes you engage with.">
-            <img src="{{ url_for('static', filename='images/your_type_distribution_pie.png') }}" alt="Interaction Type Distribution">
-        </div>
         <div class="chart-container" data-description="Displays your overall success rate across all interactions.">
-            <img src="{{ url_for('static', filename='images/your_success_rate_pie.png') }}" alt="Overall Success Rate">
+            <img src="{{ url_for('static', filename='images/overall_accuracy.png') }}" alt="Overall Accuracy">
+        </div>
+        <div class="chart-container" data-description="Displays the ratio of Quiz to Test interactions.">
+            <img src="{{ url_for('static', filename='images/quiz_test_ratio.png') }}" alt="Quiz to Test Ratio">
         </div>
     </div>
+    
     <div class="grid-container">
         <div class="chart-container" data-description="Illustrates how your interactions are distributed over time by type, differentiated into Flashcards and Quizzes.">
             <img src="{{ url_for('static', filename='images/your_correct_by_type.png') }}" alt="Correct Answers by Type Over Time">
